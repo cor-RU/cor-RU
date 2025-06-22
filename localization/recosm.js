@@ -192,7 +192,7 @@ RESPOBJ::
         что это за штуки вокруг тебя?<+>what
             SHOWIF::"recosm_greeted"
 
-        "обманщик"?<+>deceiver
+        обманщик?<+>deceiver
             SHOWIF::["recosm_state", "spared"]
 
         неважно<+>loop
