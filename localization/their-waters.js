@@ -14,6 +14,8 @@ env.localization.page['localocean'] = {dialogues: {},
 
         "stilted shore": cor_ru.entity_menu["stilted shore"].name,
 
+        "the embassy": cor_ru.entity_menu["the embassy"].name,
+
         "dive": "нырнуть",
         "rise": "вынырнуть",
     }, 
