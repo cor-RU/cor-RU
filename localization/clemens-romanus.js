@@ -10,7 +10,8 @@
 env.localization.page['localship2'] = {dialogues: {},
     definitions: {}, 
     strings: {
-        "ok what the fuck is this": "ну и что это блять такое?"
+        "ok what the fuck is this": "ну и что это блять такое?",
+        "what's up buddy": "чё как?"
     },
     entityDescriptions: {
     }

@@ -19,6 +19,7 @@ env.localization.page['localship'] = {dialogues: {},
     }, 
     entityDescriptions: {
         "the funny little room": cor_ru.entity_menu["the funny little room"].desc,
+        "clemens romanus": cor_ru.entity_menu["clemens romanus"].desc
     }
 }
 

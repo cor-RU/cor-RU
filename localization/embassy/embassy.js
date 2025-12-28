@@ -168,7 +168,7 @@ structureloop
             SHOWIF::"embassy__d1_start"
         other memories locked?<+>locked
             SHOWIF::[["embassy_d2_complete", true],["embassy_d1_complete", true],["fbx__ep2intro-end", false]]
-        back<+>loop
+        другой вопрос<+>loop
             FAKEEND::(back)
 
 obeskloop
