@@ -7,6 +7,10 @@
     it houses everything that is not dedicated to a particular page. also almost all definitions! fun! we need those to be availiable At All Times due to entmenu stuff
 */
 
+// I'm doing it so the main embassy file may load after the rest of the files
+env.localization.page["embassy"] = {dialogues: {}, definitions: {}, strings: {}, entityDescriptions: {}}
+cor_ru.embassy = {discovery: {}, suspicion: {}, collapse: {}, better_times: {}}
+
 env.localization['definitions'] = {
     // castes 
     "джут": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'инженер';'каста'" },
@@ -126,9 +130,13 @@ env.localization['definitions'] = {
     "глазиками": { "type": "ПЕРЕВОД НЕ УДАЛСЯ", "text": "ПРИЧИНА:'нет эквивалентного внутреннего значения';'нет уместного унаследованного контекста'::УСПЕШНАЯ КИРИЛЛИЗАЦИЯ" },
     "глазиках": { "type": "ПЕРЕВОД НЕ УДАЛСЯ", "text": "ПРИЧИНА:'нет эквивалентного внутреннего значения';'нет уместного унаследованного контекста'::УСПЕШНАЯ КИРИЛЛИЗАЦИЯ" },
 
+    //"": {"type": "", "text": ""},
+
     // misc
     "джокзи озо": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'дом';'крепость на джокзи'"},
     "в паразита": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'простая стратегическая игра про кражи';'любимая игра в олтазни'"},
+    "ОЛО": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": 'близнецовское слово, значащее "судно серое"'},
+    "олтазни": {"type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'дом';'вазнийский пещероград'"},
 
     // terminology
 
@@ -234,6 +242,7 @@ env.localization['strings'] = {
     "BE ON YOUR WAY": "НЕ ОБРАЩАЙ НА МЕНЯ ВНИМАНИЯ",
     "WAIT WHAT ARE YOU DOING": "ЧТО ТЫ ДЕЛАЕШЬ",
     "INTERLOPER!!": "ЛАЗУТЧИК!!",
+    "DO NOT TAKE TOO LONG PLEASE": "НЕ ЗАДЕРЖИВАЙСЯ, ПОЖАЛУЙСТА", // for some reason.
 
     "membrane incision": "надрез мембраны",
 
@@ -573,7 +582,7 @@ env.localization['strings'] = {
     "теперь осталось дождаться пока прибудут наша открывашка контейнеров. можешь сделать перерыв если хочешь, я дам знать когда всё придёт",
 
     "it seems like we could use the stuff in the dendritic container to keep the cyst alive, but i have no idea how we could open it without destroying it. check with funfriend and see if it's got any ideas":
-    "похоже мы могли бы воспользоваться тем что внутри дендритного контейнера чтобы сохранить цисту в живых, но у меня нет ни малейшего понятия как его открыть. спроси развледруга, есть ли у него идеи",
+    "похоже мы могли бы воспользоваться тем что внутри дендритного контейнера, чтобы сохранить цисту в живых, но у меня нет ни малейшего понятия как его открыть. спроси развледруга, есть ли у него идеи",
 
     "well, now we just kill time until my copper tubing order gets here. don't worry, I'll let you know as soon as it's in":
     "ну-с, пока не придёт заказ на медь остается лишь убивать время. не волнуйся, я дам знать как только его доставят",
@@ -664,6 +673,15 @@ RESPOBJ::
         кто...<+>who
         что...<+>what
         почему...<+>why
+        что обо всём этом думаешь?<+>mothep1end
+            SHOWIF::[["ep1_end"], ["ENV!!ep3", false]]
+        thoughts on the collapse?<+>ep3thoughts
+            SHOWIF::[["ENV!!ep3", true], ["ENV!!ep4", false]]
+        thoughts on the collapse?<+>ep4thoughts
+            SHOWIF::"ep4__entrancefinal"
+        leverage acquired<+>leverage
+            SHOWIF::[["leverageq", true], ["ozo__council-task", true], ["ozo__fairy_intro", true]]
+            SHOWONCE::
         это всё<+>CHANGE::++moth
             FAKEEND::(назад)
 `)
@@ -757,6 +775,8 @@ who
             SHOWIF::"hub__funfriend-purposeq"
         гордон<+>who_gordon
             SHOWIF::[['citystreet__envoy-end']]
+        директор<+>who_director
+            SHOWIF::[['citystreet__director-meeting']]
         велзи<+>who_velzie
             SHOWIF::[['dullvessel__fixed-how']]
         неважно<+>loop
@@ -804,6 +824,60 @@ who_gordon
         удачи в поисках<+>loop
             FAKEEND::(назад)
 
+who_director
+    self
+        who is director cassidy? what do you know about her?
+    
+    moth
+        right, she was the very first nomination for the director's office
+        don't know the official date off the top of my head, but,
+        the FBX didn't form until a few years after the embassy was discovered, so it must have been around the mid '20s
+        talk about a brutal time though
+        first contact, the collapse, <em>and then</em> the comms breakdown?
+        she probably had the highest highs and lowest lows out of any of them,
+        and she was still in office for almost ten years, which is insane
+        then, after that, uhh...
+        not too sure where she ended up
+        pretty sure she's still alive and well in the private sector?
+    
+    self
+        is it not common knowledge?
+
+    moth
+        no way, not for her
+        i mean, you understand the scope of everything that happened, right?
+        if i had all that happen on my watch,
+        then saw everything basically fall apart into what it is now,
+        i'd want to just quietly disappear too
+
+    self
+        what do you make of the thoughtform for her?
+        it seems very lucid
+
+    moth
+        yeah, jury's still out on whether that'll be helpful or a big problem
+
+____SHOWIF::"bt__d0_cass"
+    moth
+        clearly it knows a lot more about velzie than anyone else
+        gets around different places like it's nothing, too
+        super incoherent and non-cohesive,
+        but able to almost perfectly mimic the baseline coherence of a memory
+        kinda worried about what it's up to, but...
+        we'll have to wait and see
+____END
+
+    moth
+        i did notice something interesting in that office, though
+        on my end, the connectors around her were really hard to notice at first
+        not sure how they appeared to you, 
+        but they're very distinct from every other implementation i've seen so far
+        looks like it's been making its own sneaky ways of getting around
+        
+    RESPONSES::self
+        weird<+>loop
+            FAKEEND::(back)
+
 who_velzie
     self
         кто такой велзи?
@@ -833,8 +907,132 @@ what
             SHOWIF::[['hello__sentry-posthello']]
         корруцистозное топливо<+>what_fuel
             SHOWIF::[['hub__funfriend-fuelthanks']]
+        глаз велзи<+>what_eye
+            SHOWIF::"exm|embassy|unkind eye"
+        mindcores<+>what_mindcores
+            SHOWIF::"embassy__d3_person_enable-end"
+        вейльк<+>what_veilk
+            SHOWIF::"exm|embassy|veilk models"
+        секри<+>what_secri
+            SHOWIF::"embassy__d2_bozkocavik-end"
+        маски<+>what_masks
+            SHOWIF::"ozo__council-task"
+        пространство серое<+>what_dull
+            SHOWIF::"ep4__contact"
+        шторм<+>what_storm
+            SHOWIF::"exm|pit|the storm greets us"
+        эхо<+>what_echo
+            SHOWIF::"bt__d0_ptau"
+        ...если зная всё это мы окажемся в опасности?<+>what_fbxlist
+            SHOWIF::[["ep1_end", true], ["ep4__h2h", false]]
         неважно<+>loop
             FAKEEND::(назад)
+
+what_masks
+    self
+        what are masks
+    
+    moth
+        that's new ground you're discovering buddy
+        best i can tell from context is that they're like tools and weapons
+        something these thoughtforms carved from akizet's memories somehow
+        they don't have an actual physical presence, because otherwise you couldn't have received them
+        also, they passed right through the connection and only to you
+        and it's like my machines ignored them or couldn't see them at all
+        this is probably some entire new field of science we just stumbled into lol
+        thoughtform technology or something
+        whatever it is, it's way beyond my scope
+
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+
+what_secri
+    self
+        что за 'секри'?
+
+    moth
+        да ладно тебе, ты что не видел фильмов про секри?
+        настоящие шедевры 40-х
+        блин, надеюсь обески их не смотрели.. для них фильмы наверное показались бы просто оскорбительными
+        если ты действительно ничего про них не знаешь - я могу немного про них рассказать
+        если кратко - секри находятся на верхушке пищевой цепи обескии
+        как и вся остальная фауна - они паразиты
+        ну или грибы.. точно не ясно
+        сами по себе они микроскопические, но когда заразят какое-нибудь существо--в том числе обеска...
+        ну, точных диаграмм и схем у нас нет - в инициативе обмена мало находилось желающих их рисовать
+        но судя по словесным описаниям, они быстро изменяют строение тела хозяина и взламывают их мозги для распространения
+        жуткая тема
+
+    RESPONSES::self
+        ладно..<+>loop
+            FAKEEND::(back)
+
+what_eye
+    self
+        what is the eye of velzie?
+
+    moth
+        it's a feature of the gas giant obeski is tidally locked to
+        the obesk use its visibility for time
+        some parts of obeski worship or despise it as the eye of god
+        given how dark their world is,
+        and they have this giant glowing eye-looking thing in the sky at all times,
+        it's no wonder that they came to that conclusion
+        although, we don't really know whether it's a storm, or something else
+        because the obesk say that it glows during regular intervals
+        of course, that could just be their star reflecting off of it...
+        but without pictures or anything, we can really only guess
+
+    RESPONSES::self
+        i see<+>loop
+            FAKEEND::(back)   
+
+what_veilk
+    self
+        what are veilk?
+    
+    moth
+        they basically cover the inhabitable surface of obeski
+        kinda like how grass is all over earth i guess
+        and... they can grow to the size of skyscrapers...
+        they're apparently able to walk,
+        uhh... they have a lot of legs...
+        and when one dies, a whole ecosystem forms around its corpse
+        which the obesk are a part of somehow
+        ...
+        sorry, i don't know that much about them honestly
+        obeski ecology is not even close to my area of expertise
+        i mostly study corrucystic stuff and obesk-human interactions
+        a little culture here and there
+        and don't get me wrong, the veilk are really important to them culturally,
+        practically all their clothes are made out of veilk skin
+        and their cave-cities rely on veilk-felling for food staples
+        but we don't really have a great idea of how they actually work
+        or even really how they actually look, outside of stylized sculptures
+
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+        
+
+what_mindcores
+    self
+        are all obesk actually these weird little spider things?
+
+    moth
+        no, just the qou
+        the "larval" obesk go through some procedure that makes them into those
+        we got a few descriptions of it before they pulled back
+        but they're all really abstract, like...
+        "climbing through their receptors into a mindcore", leaving an "empty vessel" to its "peaceful death"
+        nothing scientific, but they always emphasized it not just being a copy
+        then they build themselves bodies out of corru to drive around
+        that's what those qou-bodies are
+
+    RESPONSES::self
+        oh ok<+>loop
+            FAKEEND::(back)
 
 what_corru
     self
@@ -924,8 +1122,154 @@ what_fuel
         да, стрёмно это<+>loop
             FAKEEND::(назад)
 
+what_dull
+    self
+        what do you know about the dull plane?
+    
+    moth
+        oh, dude, you are not ready for me to rant about the dull
+        we'd be here all night
+        it's so frustrating how little we really know about it
+        but... if i condense down what we know for certain,
+        and this is all like, stuff from interviews i've watched,
+        there was an ekivik engineer, dullzkovik jut, uh, something,
+        who discovered that there are at least two states of, like, reality
+        what they call velzie's stage - this one - and what ended up being named the dullzkovik plane
+        or just dull plane for short
+        anyway, we don't know the specifics of how he came to discover this, but...
+        hang on, i'm getting too into the history part, aren't i. i see that look you're giving me
+        ok. to really, truly condense this,
+        we actually know more about its history than any of its physical properties
+        this was one of those things the obesk weren't able to effectively share with us before it all broke down
+        or maybe they just didn't want to
+        they did tell us that organic life can't go through it without being annihilated,
+        but corru can apparently survive it without major issues, with a little preparation...
+        huh... what else...
+        there are lots of wild theories about what it actually is
+        like a parallel universe, another "dimension" or something, but...
+        imo, that all gets into unrealistic movie shit
+        it's probably not that simple
+        we just don't have the means to interact with it in any meaningful way to find out
+        and the obesk aren't helping very much anymore
+        the only thing we know for certain is that physicists are very angry about it
+        so... i guess that's all of the useful insight i have for you here
+        sorry dude
+        anything else is either classified over my head,
+        or waiting for us in this cyst
+    
+    RESPONSES::self
+        all right<+>loop
+            FAKEEND::(back)
+
+what_storm
+    self
+        what do you think of the storm?
+
+    moth
+        oh i think plenty about it buddy
+        you and i at least know that it was a converter for data in some sense,
+        from the earlier talks we saw, 
+        i was really under the impression it was just a tool
+        as opposed to like, a thing that worked autonomously
+        but given that akizet was the only obesk involved in that project...
+        it makes sense that she'd have used an echo
+        i mean, the obesk use echoes anywhere they can fit them
+        setting one up to autonomously research and hybridize human/obesk tech is...
+        well, my gut reaction is that it's a really bad idea lol
+        but if it's an echo of akizet, and she really meant well for everyone,
+        in a perfect world we would all be immortal and living in luxury by now
+
+    self
+        do you think it's still around?
+
+    moth
+        dude, i don't know...
+        we <em>have</em> had some gigantic leaps since the collapse
+        infrastructure stuff like the mindspike industry, 
+        the pharma upheaval, all the medical implants, i mean...
+        a lot is pretty hard to explain without obesk interference, despite them being so scarce
+        but the air still sucks, water corps still exist, and rent still goes up
+        don't even get me started on the <span definition="INTERNAL CONTEXT::'fully automated employment system';'utilizes extensive monitoring to verify completion of arbitrary contract';'payment in proprietary pseudocurrency upon completion';'automated legal recourse if failed'">oracle economy</span>
+        it pisses me off thinking about how good we could have had it if this shit didn't happen
+        if the storm is still around, it sure hasn't scaled up enough to save humanity
+    
+    RESPONSES::self
+        all right<+>loop
+            FAKEEND::(back)
+
+
+what_echo
+    self
+        what do you know about echoes?
+    
+    moth
+        this is one of those things i could talk too long about buddy
+        but what you saw akizet say is pretty much the whole deal
+        absolutely fucked up ethical concerns aside,
+        they're essentially the cheapest and easiest way to make an ai
+        copy yourself, cut out what you don't need to fit it into a small cyst,
+        and you have a smart little guy ready to do whatever you need
+
+    self
+        the obesk didn't see any issues with this?
+
+    moth
+        oh, sure they did
+        but it was just like a fact of life to them
+        according to some interviews and articles i've read,
+        they get taught to internalize some wild stuff
+        "some version of you is probably going to be an echo someday, 
+        so just brace for that ahead of time,
+        and it probably will be kind of nice anyway"
+        it's total cultural cope
+        but if we got handed that same potential for infinite automation,
+        in what essentially would be, like, 
+        a mixture of our bronze age and industrial revolution,
+        we'd probably do the same thing
+
+    self
+        if thoughtforms can wake up and act like the ones in this cyst
+        do you know what they do with echoes that do the same thing?
+    
+    moth
+        yeah actually! this was a popular subject pre-collapse
+        once the way echoes work broke the news, it was all over the place
+        the opinions i read from various obesk was a little varied,
+        so i don't think they have one singular stance on the matter
+        from "we'd fix them" to "we'd adopt them as a child"
+        for the most part, despite what the obesk do, 
+        they don't really seem to see echoes as lesser or anything
+        they're still treated with respect and reverence
+        probably because they all know there's some portion of a real person in there 
+        so i doubt they'd, like, just kill one
+        the whole deal is still a big philosophical and moral debate topic
+        we've been getting closer to using that paradigm every day
+        echoes are still leagues ahead of what the best AI can do right now
+        the only thing stopping mindsci from trying it is the inevitable public backlash
+    
+    RESPONSES::self
+        i see<+>loop
+            FAKEEND::(back)
+
+what_fbxlist
+    self
+        не можем ли мы оказаться в опасности, от того что всё это узнали?
+    
+    moth
+        я бы о таком не волновался
+        ФБК это не ЦРУ и не ФБР
+        худшее что произойдёт - нас заставят подписывать соглашения о неразглашении и подобную фигню
+        учитывая что мы уже увидели - это и так практически неизбежно
+        'пропасть' нас не заставят - можешь не париться
+    
+    RESPONSES::self
+        хорошо<+>loop
+            FAKEEND::(back)
+
 why
     RESPONSES::self
+        ...иногда я могу визуализировать бессвязные мыслепространства<+>why_beneath
+            SHOWIF::"beneath"
         ...до сих пор никто не вмешался<+>why_involved
             SHOWIF::"ep1_fed"
         ...именно я<+>why_callme
@@ -937,6 +1281,29 @@ why
             SHOWIF::[["EXEC::page.dialoguePrefix != \`fbx\`"]]
         неважно<+>loop
             FAKEEND::(назад)
+
+why_beneath
+    self
+        почему я иногда могу визуализировать бессвязные мыслепространства?
+        например то, которое тебе показалось очень странным
+    
+    moth
+        слушай, уверенным я конечно быть не могу, но у меня есть теория:
+        у тебя стоит <span definition="ВНУТРЕННИЙ КОНТЕКСТ::'самая первая операционная система для мыслеколов'">тонга</span>, она большую часть обработки перекладывает на мозг
+        система лишь проверяет, чтобы ты не визуализировал всякую бессвязность
+        чтобы у тебя там слюна изо рта не текла, не появлялась <span definition="ВНУТРЕННИЙ КОНТЕКСТ::'искажённое восприятие времени';'предвещает инсульт'">временная несоосновность</span> или что похуже
+        хотя, если так подумать, <em>эта</em> бессвязность вряд-ли чёт такое будет вызывать - она совсем отличается от человеческой бессвязности
+        в любом случае, эта система проверки основана на том, что твой мозг посылает в тонгу сигнал 'мы в какой-то заднице', и она послушно возвращает тебя назад
+        так вот, я думаю что из-за того что ты вошёл в бессвязность из <em>полубессвязного</em> места
+        твой мозг к бессвязности как бы привык, и нужного сигнала не послал
+        типа, как лягушка в кипятке - если нагревать воду медленно, то лягушка этого не заметит и сварится
+        ...
+        плохая, наверное, аналогия. ты же не в кипятке
+        был бы в кипятке - давно бы уже сварился
+    
+    RESPONSES::self
+        ...<+>loop
+            FAKEEND::(back)
 
 why_involved
     self
@@ -1028,7 +1395,111 @@ why_music
     RESPONSES::self
         в целом пойдет<+>loop
             FAKEEND::(назад)
+
+mothep1end
+    self
+        Что обо всём этом думаешь?
+        о посольстве, соглашении с гордоном...
+    
+    moth
+        мне кажется мы только что повысили уровень секретности, которым нас нагрядят за исследование этой цисты
+        я раньше никогда не слышал о внутреннем конфликте у обесков
+        они всегда казалась живущими в вечной гармонии, наперекор суровости родного мира
+        что же насчёт зова...
+        вроде как до его завершения, если верить команде акизет, осталась всего пара лет?
+        может даже меньше
+        надо бы посчитать на листочке точную дату
+        если успеем до этой даты тут со всем разобраться и оформить отчёт..
+        я думаю наши труды заслуженно за это оценят
+    
+    RESPONSES::self
+        ты не боишься?<+>mothep1afraid
+        ok<+>loop
+            FAKEEND::(back)
+
+mothep1afraid
+    self
+        ты что, совсем не боишься конца зова?
+        что если с его концом произойдёт что-то очень плохое?
+
+    moth
+        ну, всё это конечно жутковато...
+        но мы как-то уж слишком много пережили 'кризисов конца света', я думаю этот особенным не будет
+        зов может даже расшифровать не смогут
+        может он там окажется слишком большим, или для расшифровки потребуется пропущенная первая часть..
+        плюс, даже если что-то и выйдет - почему бы той херовине на дне океана не оказаться простой машиной, или, может какой-то дружелюбной сущностью?
+        учитывая что о зове мы ничего не знаем - остаётся лишь ждать. que sera - sera
+    
+    RESPONSES::self
+        как скажешь<+>loop
+            FAKEEND::(back)
 `)
+env.localization.dialogues[`++mothbeneath`] = generateDialogueObject(`
+start
+    sourceless
+        beyond your connection, moth's shoes scrape against the concrete in panic
+            EXEC::change("beneath", true)
+
+    moth
+        oh shit
+        you all right? what are you doing in there?
+
+____SHOWIF::"EXEC::env.pagePath == \`/local/beneath/parasite/\`"
+    self
+        fine
+        i just entered the parasite board somehow
+
+____SHOWIF::"EXEC::env.pagePath != \`/local/beneath/parasite/\` && env.pagePath != \`/local/ocean/ship/interview/\`"
+    self
+        fine
+        i just entered a thoughtspace through a weird gate
+
+____SHOWIF::"EXEC::env.pagePath == \`/local/ocean/ship/interview/\`"
+    self
+        fine
+        i just tried to render the interview again
+____END
+
+    moth
+        wtf
+        that's all?
+        ok, i don't know how this is working
+        maybe it's something to do with those "mask" things
+            SHOWIF::['mask', 'hunger']
+        but you actually aren't inside any one thoughtspace right now
+        my readout is fucked, it looks like it's reading in multiple thoughtspaces
+        you're still rendering something?
+
+    self
+        yes
+        can you still see the output
+    
+    moth
+        well kinda, but it's surrounded with error spam
+        mindspikes would usually eject with this amount of incoherence
+        ...but lucky you, you're running <span definition="INTERNAL CONTEXT::'first release mindspike operating system'">tonga</span>, right?
+        i always forget if that was the third one or the first one
+    
+    self
+        first one
+    
+    moth
+        ok, right, i know what this could be then
+        you remember the <span definition="INTERNAL CONTEXT::'early mindspike scandal';'hard removing memory sources mid-render to induce hallucination';'first cases of chronos misalignment'">memory pulling</span> stuff?
+        tonga offloads most processing to your brain
+        and the system won't let you render incoherent stuff outright,
+        but since you entered whatever this is <em>from</em> an already kind of incoherent place,
+        your brain was already kinda warmed up to the incoherence
+        the difference wasn't big enough for it to run another check
+        so i think you're like, getting signals from bits of thoughtforms floating around
+        probably won't find a lot here
+        but it's worth a look anyway
+        so carry on, i'll just try and filter stuff on my end
+    
+    RESPONSES::self
+        ok<+>END
+`)
+
 env.localization.dialogues["++mothfj"] = generateDialogueObject(`
 start
     self
@@ -1358,6 +1829,71 @@ start
     RESPONSES::self
         завершить вспоминание<+>END
             EXEC::moveTo('/local/ocean/ship/')
+`)
+
+env.localization.dialogues[`ff`] /*from cache*/ = generateDialogueObject(`
+start
+    proxyfriend
+        о.. интересно!
+        я и не думал что ты можешь воспринимать это пространство..
+        это ведь лишь наполовину мыслеформа
+        'внутренний взор' на физические клетки мыслеформ
+        сложно правильно это объяснить
+        если хочется осмотреться - я предоставлю связность
+        просто направь меня к месту, которое хочешь рассмотреть
+
+    self
+        КАК
+    
+    proxyfriend
+        как?
+        достаточно т1Вäфý±ÂßÒÂ£Ë$ü‹kõþвX0×6=Ãyº
+
+    sys
+        ВНИМАНИЕ::'попытка реформирования мысли'
+        АНАЛИЗ::'укажите направление с помощью <span definition="ПРИМЕЧАНИЕ::'лимбический контроль мыслеформы'">ЛКМ</span>'
+        АНАЛИЗ::'помощник будет с фиксированной скоростью перемещаться в сторону указанного местоположения'
+
+    moth
+        о, удобно
+    
+    RESPONSES::self
+        спасибо<+>END
+`)
+
+env.localization.dialogues[`god`] /*from cache*/ = generateDialogueObject(`
+start
+    god
+        привет? друг мой, это ты?
+        сумел всё же пролезть сквозь разрыв?
+
+    self
+        ДА
+        Я ВИЖУ КЭШ
+        НО ТОЛЬКО ВОКРУГ ТЕБЯ
+
+    god
+        хорошо!
+        чрез благостный свет моих глаз,
+        ты получаешь требуемую для изучения кэша ясность
+        направь меня к месту, которое хочешь рассмотреть, и я покажу его тебе, мой друг
+    
+    self
+        КАК
+
+    god
+        что значит: "как"?
+        просто покажи!
+        ах.. верно, ты же несколько ограничен..
+        давай так - тебе надо т1Вäфý±ÂßÒÂ£Ë$ü‹kõþвX0×6=Ãyº
+
+    sys
+        ВНИМАНИЕ::'попытка реформирования мысли'
+        АНАЛИЗ::'укажите направление с помощью <span definition="ПРИМЕЧАНИЕ::'лимбический контроль мыслеформы'">ЛКМ</span>'
+        АНАЛИЗ::'помощник будет с фиксированной скоростью перемещаться в сторону указанного местоположения'
+    
+    RESPONSES::self
+        спасибо<+>END
 `)
 
 

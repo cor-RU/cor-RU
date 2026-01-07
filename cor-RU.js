@@ -67,7 +67,7 @@ if (window.location.pathname == '/credits') {
     document.querySelector(".fundfriends").insertAdjacentHTML("afterbegin", fund)
     throw new Error("hi dont mind me cor-RU is not supposed to load properly in credits")
 }
-else if ((page.path == '/' && !check('TEMP!!sat') && check('ep1_epilogue') && !check('ep2_showmaterials')) || env.ep2 == true) {
+else if ((page.path == '/' && !check('TEMP!!sat') && check('ep1_end') && !check('ep2_showmaterials')) || env.ep2 == true) {
     chatter({actor: 'actual_site_error', text: "hi! cor-RU is availiable only for ep0-1<br>приветик! cor-RU доступен только для ep0-1", readout: true})
     throw new Error("hi! сor-RU is availiable only for ep0-1")
 }
@@ -549,7 +549,8 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
             localship2:         "https://darkthunderer.github.io/cor-RU/localization/clemens-romanus.js",
 
             embassy:            "https://darkthunderer.github.io/cor-RU/localization/embassy/embassy.js",
-            discovery:          "https://darkthunderer.github.io/cor-RU/localization/embassy/discovery.js"
+            discovery:          "https://darkthunderer.github.io/cor-RU/localization/embassy/discovery.js",
+            suspicion:          "https://darkthunderer.github.io/cor-RU/localization/embassy/suspicion.js",
         },
         entityMenu: "https://darkthunderer.github.io/cor-RU/localization/entity-menu.js",
         load:       "https://darkthunderer.github.io/cor-RU/load.js",
@@ -562,10 +563,11 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
             listArray.push(cor_ru.list.everything);
             listArray.push(cor_ru.list.entityMenu);
             if (Object.hasOwn(cor_ru.list.page, page.dialoguePrefix)) {
-                listArray.push(cor_ru.list.page[page.dialoguePrefix])
                 if (page.dialoguePrefix == "embassy") {
                     listArray.push(cor_ru.list.page.discovery)
+                    listArray.push(cor_ru.list.page.suspicion)
                 }
+                listArray.push(cor_ru.list.page[page.dialoguePrefix])
             }
             else if (page.dialoguePrefix != "notfound") console.warn("the page with dialoguePrefix " + page.dialoguePrefix + " does not have a localization! this might be a bug, but might also be intentional or plain expected if you are using other mods - @cor-RU");
             listArray.push(cor_ru.list.load);
@@ -601,23 +603,25 @@ cor_ru['advance'] = function () {
     }, 1000)
 }
 cor_ru['advancewarnclick'] = function () {
-    document.body.insertAdjacentHTML('beforeend', `
-        <div id="ru-warning" class="popup-warning">
-            <div class="sysblock">
-                <div class="sysbox ru">
-                    <h3>!!__ПРЕДУПРЕЖДЕНИЕ__!!</h3>
-                    <p class="sysinfo">Приветик! Вы достигли конца <em>полноценно переведённого контента в cor-RU!</em></p>
-                    <p class="sysinfo">В следующем эпизоде cor-RU отключится и игра будет состоять целиком из английского текста.</p>
-                    <p class="sysinfo">Если есть вопросы, просьбы, предложения или надо зарепортить баг, обращайтесь к @dutokrisa, @bra1nslug_ в дискорде или @bruhslug в телеграме. Также доступны: <a target="_blank" class="rulink" href="https://forms.gle/HHGhd4zU3VmJQgPCA">анонимная гугл форма</a> и <a target="_blank" class="rulink" href="https://discord.gg/QtqqCh8myn">дискорд сервер</a>.</p>
-                    <p class="sysinfo">Спасибо за использование :]</p>
-                    <div class="buttons">
-                        <span id="gpu-done" class="button" onclick="cor_ru.advance();document.querySelector('#ru-warning').remove()">продвинуть лог</span>
-                        <span id="gpu-hide" class="button" onclick="document.querySelector('#ru-warning').remove()">пока не продвигать</span>
+    if (env.ep1 == true) {
+        document.body.insertAdjacentHTML('beforeend', `
+            <div id="ru-warning" class="popup-warning">
+                <div class="sysblock">
+                    <div class="sysbox ru">
+                        <h3>!!__ПРЕДУПРЕЖДЕНИЕ__!!</h3>
+                        <p class="sysinfo">Приветик! Вы достигли конца <em>полноценно переведённого контента в cor-RU!</em></p>
+                        <p class="sysinfo">В следующем эпизоде cor-RU отключится и игра будет состоять целиком из английского текста.</p>
+                        <p class="sysinfo">Если есть вопросы, просьбы, предложения или надо зарепортить баг, обращайтесь к автору форка @darkthunderer или оригинальной команде перевода @dutokrisa и @bra1nslug_ (в дискорде)/@bruhslug (в телеграме). Также доступны: <a target="_blank" class="rulink" href="https://forms.gle/HHGhd4zU3VmJQgPCA">анонимная гугл форма</a> и <a target="_blank" class="rulink" href="https://discord.gg/QtqqCh8myn">дискорд сервер</a>.</p>
+                        <p class="sysinfo">Спасибо за использование :]</p>
+                        <div class="buttons">
+                            <span id="gpu-done" class="button" onclick="cor_ru.advance();document.querySelector('#ru-warning').remove()">продолжить лог</span>
+                            <span id="gpu-hide" class="button" onclick="document.querySelector('#ru-warning').remove()">пока не продолжать</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    `)
+        `)
+    }
 }
 env.entities['advance log'] = {
     hide: true,

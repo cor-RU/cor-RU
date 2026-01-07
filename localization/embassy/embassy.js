@@ -2,52 +2,118 @@
     cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
-    > localization/embassy.js
-    localization for /local/ocean/embassy
+    > localization/common-embassy.js
+    localization for /local/ocean/embassy --- all common things and a kitchen sink
 */
 
-env.localization.page["embassy"] = {dialogues: {},
-    definitions: {},
-    strings: {
-        "this is the most dense thoughtform i think i've ever seen... they have such a strange way of storing data": "это, пожалуй, самая плотная мыслеформа, которую я когда-либо видел",
-        "holy smokes. yeah i don't think we ever heard about this part of the call... hey--there's another memory that's been fixed, open it": "ну нихера себе. про такие детали о зове я ещё никогда не слышал.. о--погляди - тут новое воспоминание появилось - посмотри что внутри",
-        "jesus... well that first memory lines up with what akizet told gordon. but why would she go to us if they agreed to keep it quiet?": "ё.. значит то воспоминание с гордоном всё же не было бессвязным. единственное чего не понимаю - почему акизет рассказала обо всём нам, если они договорились хранить это в тайне?",
-        "if those were two of the memories she chose to store, what are these other ones??": "если акизет хранит здесь такие ядерные воспоминания, то я просто боюсь представить что мы найдём в других секциях посольства",
-        "time to get into the collapse, buddy": "пришла пора узнать о коллапсе",
-        "seems like funfriend is still working on the rest of the collapse memory for now": "похоже оставшийся кусок воспоминаний о коллапсе развледруг всё ещё чинит",
-        "time to finish the collapse buddy. we almost got everything": "пришла пора досмотреть коллапс до конца. теперь мы знаем почти всё",
-        "wow... that kinda does it for this whole thoughtspace, except for that first one i guess": "пиздец.. что-ж, полагаю с этой мыслеформой закончили. точнее, почти закончили - осталось ещё посмотреть загадочное первое воспоминание",
-        "our first fully repaired thoughtspace... kinda. wild": "первое полностью восстановленное мыслепространство... жесть.",
+env.localization.page["embassy"].definitions = {
+    ...cor_ru.embassy["discovery"].definitions,
+    ...cor_ru.embassy["suspicion"].definitions,
 
-        "there are so few distinct thoughtforms here... then again it could just be one part of the embassy": "тут так мало отдельных мыслеформ.. надеюсь это лишь часть всего посольства",
-        "did she really label this memory as 'suspicion'? or was that funfriend? that's kinda ominous": "она серьёзно решила назвать воспоминание таким угрожающим словом 'подозрение'? или это развледруг постарался?",
-        "this is fucked up dude, imagine if you couldn't trust any of us": "жесть, конечно.. представь если бы ты никому из нас не мог доверять..",
-        "how did we never hear about this?? they always said it was some sort of structural failure due to the gravity differences or some bullshit like that": "почему они нам об этом не рассказали?? обески всегда твердили, что посольство обвалилось из-за структурной неустойчивости, вызванной разницей в гравитации Земли и Обескии",
-        "i have to give it to this bstrd thing, general cohesion is still pretty solid. it's still hard to tell for sure what is real and what isn't though": "надо признать - общая связность в воспоминаниях под контролем зсрнца довольно велика. сложно понять, правда, что здесь является реальностью, а что было додумано",
+    "времяостановитель": "'частичный перевод';'сгенерировано подходящее по описанию существительное'",
+    "времяостановителя": "'частичный перевод';'сгенерировано подходящее по описанию существительное'",
+    "времяостановителю": "'частичный перевод';'сгенерировано подходящее по описанию существительное'",
+    "времяостановителем": "'частичный перевод';'сгенерировано подходящее по описанию существительное'",
+    "времяостановителе": "'частичный перевод';'сгенерировано подходящее по описанию существительное'",
 
-        "about the embassy": "о посольстве",
+    "структуразум": "'уважаемая роль';'административная позиция';'частичный перевод';'сгенерировано подходящее по описанию существительное'",
+    "структуразума": "'уважаемая роль';'административная позиция';'частичный перевод';'сгенерировано подходящее по описанию существительное'",
+    "структуразуму": "'уважаемая роль';'административная позиция';'частичный перевод';'сгенерировано подходящее по описанию существительное'",
+    "структуразумом": "'уважаемая роль';'административная позиция';'частичный перевод';'сгенерировано подходящее по описанию существительное'",
+    "структуразуме": "'уважаемая роль';'административная позиция';'частичный перевод';'сгенерировано подходящее по описанию существительное'",
+}
 
-        "experience": "вспомнить",
+env.localization.page["embassy"].strings = {
+    ...cor_ru.embassy["discovery"].strings,
+    ...cor_ru.embassy["suspicion"].strings,
 
-        "recollection::better times": cor_ru.entity_menu["recollection::better times"].name,
-        "recollection::discovery": cor_ru.entity_menu["recollection::discovery"].name,
-        "recollection::suspicion": cor_ru.entity_menu["recollection::suspicion"].name,
-        "recollection::collapse": cor_ru.entity_menu["recollection::collapse"].name,
+    "this is the most dense thoughtform i think i've ever seen... they have such a strange way of storing data": "это, пожалуй, самая плотная мыслеформа, которую я когда-либо видел. ну и странный у обесков конечно способ хранения данных",
+    "holy smokes. yeah i don't think we ever heard about this part of the call... hey--there's another memory that's been fixed, open it": "ну нихера себе. про такие детали о зове я ещё никогда не слышал.. о--погляди - тут новое воспоминание появилось - посмотри что внутри",
+    "jesus... well that first memory lines up with what akizet told gordon. but why would she go to us if they agreed to keep it quiet?": "ё.. значит то воспоминание с гордоном всё же не было бессвязным. единственное чего не понимаю - почему акизет рассказала обо всём нам, если они договорились хранить это в тайне?",
+    "if those were two of the memories she chose to store, what are these other ones??": "если акизет хранит здесь такие ядерные воспоминания, я просто боюсь представить что мы найдём в других секциях посольства",
+    "time to get into the collapse, buddy": "пришла пора узнать о коллапсе",
+    "seems like funfriend is still working on the rest of the collapse memory for now": "похоже оставшийся кусок воспоминаний о коллапсе развледруг всё ещё чинит",
+    "time to finish the collapse buddy. we almost got everything": "пришла пора досмотреть коллапс до конца. теперь мы знаем почти всё",
+    "wow... that kinda does it for this whole thoughtspace, except for that first one i guess": "пиздец.. что-ж, полагаю с этой мыслеформой закончили. точнее, почти закончили - осталось ещё посмотреть загадочное первое воспоминание",
+    "our first fully repaired thoughtspace... kinda. wild": "первое полностью восстановленное мыслепространство... жесть.",
 
-        "recollection::Aæ§<äYf¹L": cor_ru.entity_menu["recollection::Aæ§<äYf¹L"].name,
-        "recollection::ø¥¬À‰": cor_ru.entity_menu["recollection::ø¥¬À‰"].name,
-        "recollection::„²!Äë±#Rã": cor_ru.entity_menu["recollection::„²!Äë±#Rã"].name
-    },
-    entityDescriptions: {
-        "recollection::better times": cor_ru.entity_menu["recollection::better times"].desc,
-        "recollection::discovery": cor_ru.entity_menu["recollection::discovery"].desc,
-        "recollection::suspicion": cor_ru.entity_menu["recollection::suspicion"].desc,
-        "recollection::collapse": cor_ru.entity_menu["recollection::collapse"].desc,
+    "there are so few distinct thoughtforms here... then again it could just be one part of the embassy": "тут так мало отдельных мыслеформ.. надеюсь это лишь часть всего посольства",
+    "did she really label this memory as 'suspicion'? or was that funfriend? that's kinda ominous": "она серьёзно решила назвать воспоминание таким угрожающим словом 'подозрение'? или это развледруг постарался?",
+    "this is fucked up dude, imagine if you couldn't trust any of us": "жесть, конечно.. представь если бы ты никому из нас не мог доверять..",
+    "how did we never hear about this?? they always said it was some sort of structural failure due to the gravity differences or some bullshit like that": "почему они нам об этом не рассказали?? обески всегда твердили, что посольство обвалилось из-за структурной неустойчивости, вызванной разницей в гравитации Земли и Обескии",
+    "i have to give it to this bstrd thing, general cohesion is still pretty solid. it's still hard to tell for sure what is real and what isn't though": "надо признать - общая связность в воспоминаниях под контролем зсрнца довольно велика. сложно понять, правда, что здесь является реальностью, а что было додумано",
 
-        "recollection::Aæ§<äYf¹L": cor_ru.entity_menu["recollection::Aæ§<äYf¹L"].desc,
-        "recollection::ø¥¬À‰": cor_ru.entity_menu["recollection::ø¥¬À‰"].desc,
-        "recollection::„²!Äë±#Rã": cor_ru.entity_menu["recollection::„²!Äë±#Rã"].desc
-    }
+    "about the embassy": "о посольстве",
+
+    "experience": "вспомнить",
+    "leave": "уйти",
+
+    "sip-u-lacrum": "почувствовать",
+    "THE SIMULACRUM STAYS THE SAME, BUT THE TASTE REGISTERS CLEARLY": "СИМУЛЯКР НИКАК НЕ ИЗМЕНИЛСЯ, НО ТЕПЕРЬ Я ЧУВСТВУЮ СИЛЬНЫЙ ВКУС АПЕЛЬСИНА",
+    "THE BRIGHTNESS OF IT DISTORTS MY FEATURES AND SENDS MY RECEPTORS INTO A REFLEXIVE CURL": "ПОЖАЛУЙ ВКУС ДАЖЕ СЛИШКОМ СИЛЬНЫЙ - ЧЕРТЫ МОЕГО ЛИЦА И РЕЦЕПТОРЫ РЕФЛЕКТИВНО СЖИМАЮТСЯ",
+    "STRONG!! BUT THE CITRUS INSPIRES A PLEASANT SATIATION": "КИСЛО! НО, ТЕМ НЕ МЕНЕЕ, ПРИЯТНО",
+    "think to self": "подумать",
+
+    "recollection::better times": cor_ru.entity_menu["recollection::better times"].name,
+    "recollection::discovery": cor_ru.entity_menu["recollection::discovery"].name,
+    "recollection::suspicion": cor_ru.entity_menu["recollection::suspicion"].name,
+    "recollection::collapse": cor_ru.entity_menu["recollection::collapse"].name,
+
+    "recollection::Aæ§<äYf¹L": cor_ru.entity_menu["recollection::Aæ§<äYf¹L"].name,
+    "recollection::ø¥¬À‰": cor_ru.entity_menu["recollection::ø¥¬À‰"].name,
+    "recollection::„²!Äë±#Rã": cor_ru.entity_menu["recollection::„²!Äë±#Rã"].name,
+
+    "attendant": cor_ru.entity_menu["attendant"].name,
+    "movefriend": cor_ru.entity_menu["movefriend"].name,
+    "barfriend": cor_ru.entity_menu["barfriend"].name,
+
+    "tir qou": cor_ru.entity_menu["tir qou"].name,
+    "jut qou": cor_ru.entity_menu["jut qou"].name,
+    "vel qou": cor_ru.entity_menu["vel qou"].name,
+    "kiv qou": cor_ru.entity_menu["kiv qou"].name,
+
+    "akizetesche": cor_ru.entity_menu["akizetesche"].name,
+    "cavik": cor_ru.entity_menu["cavik"].name,
+    "bozko": cor_ru.entity_menu["bozko"].name,
+    "kazki": cor_ru.entity_menu["kazki"].name,
+    "tozik": cor_ru.entity_menu["tozik"].name,
+    "gakvu": cor_ru.entity_menu["gakvu"].name,
+
+    "veilklight": cor_ru.entity_menu["veilklight"].name,
+    "container": cor_ru.entity_menu["container"].name,
+}
+
+env.localization.page["embassy"].entityDescriptions = {
+    ...cor_ru.embassy["discovery"].entityDescriptions,
+    ...cor_ru.embassy["suspicion"].entityDescriptions,
+
+    "recollection::better times": cor_ru.entity_menu["recollection::better times"].desc,
+    "recollection::discovery": cor_ru.entity_menu["recollection::discovery"].desc,
+    "recollection::suspicion": cor_ru.entity_menu["recollection::suspicion"].desc,
+    "recollection::collapse": cor_ru.entity_menu["recollection::collapse"].desc,
+
+    "recollection::Aæ§<äYf¹L": cor_ru.entity_menu["recollection::Aæ§<äYf¹L"].desc,
+    "recollection::ø¥¬À‰": cor_ru.entity_menu["recollection::ø¥¬À‰"].desc,
+    "recollection::„²!Äë±#Rã": cor_ru.entity_menu["recollection::„²!Äë±#Rã"].desc,
+
+    "attendant": cor_ru.entity_menu["attendant"].desc,
+    "movefriend": cor_ru.entity_menu["movefriend"].desc,
+    "barfriend": cor_ru.entity_menu["barfriend"].desc,
+
+    "tir qou": cor_ru.entity_menu["tir qou"].desc,
+    "jut qou": cor_ru.entity_menu["jut qou"].desc,
+    "vel qou": cor_ru.entity_menu["vel qou"].desc,
+    "kiv qou": cor_ru.entity_menu["kiv qou"].desc,
+
+    "akizetesche": cor_ru.entity_menu["akizetesche"].desc,
+    "cavik": cor_ru.entity_menu["cavik"].desc,
+    "bozko": cor_ru.entity_menu["bozko"].desc,
+    "kazki": cor_ru.entity_menu["kazki"].desc,
+    "tozik": cor_ru.entity_menu["tozik"].desc,
+    "gakvu": cor_ru.entity_menu["gakvu"].desc,
+
+    "veilklight": cor_ru.entity_menu["veilklight"].desc,
+    "container": cor_ru.entity_menu["container"].desc,
 }
 
 // === DIALOGUES === //
@@ -82,14 +148,14 @@ start
 env.localization.page['embassy'].dialogues.mthembresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        about the groundsmindry<+>groundsmindry
+        о структуразумах<+>groundsmindry
             SHOWIF::"ep4__entrance"
         о структуре мыслеформы<+>structureloop
             SHOWIF::"embassy__d1_start"
         об обесках<+>obeskloop
-        about collapse<+>collapseloop
+        о коллапсе<+>collapseloop
             SHOWIF::"embassy__d3_start-end"
-        about bstrd<+>bstrd
+        о зсрнце<+>bstrd
             SHOWIF::"embassy__d3_bstrdintro-start"
         не важно<+>CHANGE::++moth
             FAKEEND::(back)
@@ -128,7 +194,7 @@ groundsmindry
 
 bstrd
     self
-        WHAT IS THIS BSTRD THING
+        ЧТО ЗА 'ЗСРНЕЦ'??
     
     moth
         i gave the data a closer look, at least as close as i can see without a spike myself
@@ -166,7 +232,7 @@ structureloop
             SHOWIF::"mth++embassy-gamegood"
         смена перспективы?<+>perspective
             SHOWIF::"embassy__d1_start"
-        other memories locked?<+>locked
+        а остальные воспоминания?<+>locked
             SHOWIF::[["embassy_d2_complete", true],["embassy_d1_complete", true],["fbx__ep2intro-end", false]]
         другой вопрос<+>loop
             FAKEEND::(back)
@@ -178,11 +244,11 @@ obeskloop
         почему обески так странно выглядят?<+>weirdlook
             SHOWIF::"embassy__d1_start"
         что стало с посольством?<+>state
-        team members still around?<+>team
+        где члены сигнальной инициативы?<+>team
             SHOWIF::"embassy__d1_kazkibozko"
-        groundsmind?<+>groundsmind
+        кто такой структуразум?<+>groundsmind
             SHOWIF::"exm|embassy|attendant"
-        what is a kalstik?<+>kalstik
+        что такое кальстик?<+>kalstik
             SHOWIF::"exm|embassy|kalstik stand"
         what is an archival vein?<+>archives
             SHOWIF::"embassy__d3_bstrdintro-start"
@@ -359,23 +425,21 @@ perspective
 
 locked
     self
-        why are these other two memories not opening up?
+        а два оставшихся воспоминания как открыть?
 
     moth
-        looking at the data i can access here,
-        these two are still totally busted. 
-        something to talk to funfriend about for sure
-        and the last one... holy smokes
-        i don't think your mindspike will even let you render it?
-        it's still busted, but i'm also reading that it has 'aggressive action'
-        even if we get it repaired,
-        your mindspike will block out combat simulations
-        it's, like... a legal thing. remember that big mindsci lawsuit?
-        although, i do have an idea...
-        but, we'll get to that if this ever gets fixed
+        судя по тому что я тут вижу в консоли..
+        никак. они, можно сказать, уничтожены
+        хотя развледруг говорил что починить их сможет...
+        ё! последнее, мне кажется, тебе не даст визуализировать сам мыслекол
+        даже несмотря на то, что от него ничего толком не осталось, я вижу множественные..
+        э.. как же там они в лицензии зовутся?.. а! 'агрессивные действия'
+        даже если развледруг их нам починит, мыслекол не даст воспоминание визуализировать
+        помнишь ведь тот иск на майндсай? вот с тех пор ограничение и стоит
+        хотя... есть у меня одна идейка. поспрашиваю у знакомых что можно сделать
     
     RESPONSES::self
-        i see<+>structureloop
+        хорошо<+>structureloop
             FAKEEND::(back)
 
 weirdlook
@@ -396,14 +460,14 @@ weirdlook
 
 kalstik
     self
-        what is a kalstik?
+        что такое кальстик?
     
     moth
-        i have absolutely no idea
-        sorry lol
+        без малейшего понятия
+        тут ничем не помогу, хех
     
     RESPONSES::self
-        its ok<+>obeskloop
+        ладно<+>obeskloop
             FAKEEND::(back)
 
 archives
@@ -491,21 +555,21 @@ ____END
 
 groundsmind
     self
-        what is a groundsmind?
+        кто такой структуразум?
 
     moth
-        oh, you don't know?
-        it's pretty cool
-        basically, they assign someone to be the "groundsmind" of major structures
-        they connect to this gigantic corrucyst that's hooked up to the walls
-        and they kind of just control everything
-        it's like they become the building
-        sounds familiar, right?
-        that idea ended up inspiring the whole mindspike industry
-        it's one of those little bits of history that gets forgotten all the time
+        а, ты не знаешь?
+        оч крутая тема
+        если кратко, обески назначали крутых инженеров "структуразумами" крупных структур
+        эти инженеры присоединялись к гигантским корруцистам, через стены соединённым со всей машинерией
+        это давало им возможность управлять вообще всем, чем захочется
+        буквально стать структурой, чувствовать её как свои пять пальцев
+        ничего не напоминает?
+        потому что индустрию мыслеколов вдохновили именно структуразумы обесков
+        жалко что об этом интересном факте так редко вспоминают
     
     RESPONSES::self
-        i see<+>obeskloop
+        прикольно<+>obeskloop
             FAKEEND::(back)
 
 `)

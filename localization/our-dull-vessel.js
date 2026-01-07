@@ -17,6 +17,10 @@ env.localization.page['dullvessel'] = {dialogues: {},
         "glazika": cor_ru.entity_menu["glazika"].name,
         "container": cor_ru.entity_menu["container"].name,
 
+        "parasite plane": cor_ru.entity_menu["parasite plane"].name,
+        "dull heart": cor_ru.entity_menu["dull heart"].name,
+        "climbing wall": cor_ru.entity_menu["climbing wall"].name,
+
         /*moth*/ "that \"container\" looks familiar": "этот \"контейнер\" выглядит знакомо",
         "woah... look at this, dude. this is a different thoughtspace, somehow": "ух.. посмотри-ка, да это же совсем другое мыслепространство!",
         "looks like funfriend's restored a little bit here, there's definitely more data than before": "развледруг тут похоже много чего восстановил - данных стало гораздо больше"
@@ -25,7 +29,10 @@ env.localization.page['dullvessel'] = {dialogues: {},
     entityDescriptions: {
         "pilot cyst": cor_ru.entity_menu["pilot cyst"].desc,
         "glazika": cor_ru.entity_menu["glazika"].desc,
-        "container": cor_ru.entity_menu["container"].desc
+        "container": `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'обработанные металлы, легкодоступные'</span>`,
+        "parasite plane": cor_ru.entity_menu["parasite plane"].desc,
+        "dull heart": cor_ru.entity_menu["dull heart"].desc,
+        "climbing wall": cor_ru.entity_menu["climbing wall"].desc
     }
 }
 
@@ -53,7 +60,7 @@ start
         у меня есть вопрос о судне серое
 
     moth
-        чё как?
+        какой же?
     
     RESPOBJ::mthdullresp
 
