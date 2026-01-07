@@ -524,35 +524,36 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
     
 
     list: {
-        everything: "https://darkthunderer.github.io/cor-RU/localization/everystuff.js",
+        everything: "http://localhost:8000/localization/everystuff.js",
         page: {
-            fbx:                "https://darkthunderer.github.io/cor-RU/localization/basement.js",
+            fbx:                "http://localhost:8000/localization/basement.js",
 
-            hello:              "https://darkthunderer.github.io/cor-RU/localization/auth-layer.js",
-            hub:                "https://darkthunderer.github.io/cor-RU/localization/hub.js",
+            hello:              "http://localhost:8000/localization/auth-layer.js",
+            hub:                "http://localhost:8000/localization/hub.js",
 
-            localcity:          "https://darkthunderer.github.io/cor-RU/localization/their-city.js",
-            citystreet:         "https://darkthunderer.github.io/cor-RU/localization/city-surface.js",
+            localcity:          "http://localhost:8000/localization/their-city.js",
+            citystreet:         "http://localhost:8000/localization/city-surface.js",
 
-            localorbit:         "https://darkthunderer.github.io/cor-RU/localization/the-void.js",
-            dullvessel:         "https://darkthunderer.github.io/cor-RU/localization/our-dull-vessel.js",
+            localorbit:         "http://localhost:8000/localization/the-void.js",
+            dullvessel:         "http://localhost:8000/localization/our-dull-vessel.js",
 
-            localocean:         "https://darkthunderer.github.io/cor-RU/localization/their-waters.js",
-            localship:          "https://darkthunderer.github.io/cor-RU/localization/their-vessel.js",
-            interview1:         "https://darkthunderer.github.io/cor-RU/localization/the-funny-little-room.js",
+            localocean:         "http://localhost:8000/localization/their-waters.js",
+            localship:          "http://localhost:8000/localization/their-vessel.js",
+            interview1:         "http://localhost:8000/localization/the-funny-little-room.js",
 
-            localdepths:        "https://darkthunderer.github.io/cor-RU/localization/the-depths.js",
-            localuncosm:        "https://darkthunderer.github.io/cor-RU/localization/uncosm.js",
-            localuncosmwhere:   "https://darkthunderer.github.io/cor-RU/localization/memory-hole.js",
-            recosm:             "https://darkthunderer.github.io/cor-RU/localization/recosm.js",
-            cache:              "https://darkthunderer.github.io/cor-RU/localization/cache.js",
-            localship2:         "https://darkthunderer.github.io/cor-RU/localization/clemens-romanus.js",
+            localdepths:        "http://localhost:8000/localization/the-depths.js",
+            localuncosm:        "http://localhost:8000/localization/uncosm.js",
+            localuncosmwhere:   "http://localhost:8000/localization/memory-hole.js",
+            recosm:             "http://localhost:8000/localization/recosm.js",
+            cache:              "http://localhost:8000/localization/cache.js",
+            localship2:         "http://localhost:8000/localization/clemens-romanus.js",
 
-            embassy:            "https://darkthunderer.github.io/cor-RU/localization/embassy/embassy.js",
-            discovery:          "https://darkthunderer.github.io/cor-RU/localization/embassy/discovery.js"
+            embassy:            "http://localhost:8000/localization/embassy/embassy.js",
+            discovery:          "http://localhost:8000/localization/embassy/discovery.js",
+            suspicion:          "http://localhost:8000/localization/embassy/suspicion.js",
         },
-        entityMenu: "https://darkthunderer.github.io/cor-RU/localization/entity-menu.js",
-        load:       "https://darkthunderer.github.io/cor-RU/load.js",
+        entityMenu: "http://localhost:8000/localization/entity-menu.js",
+        load:       "http://localhost:8000/load.js",
     },
 
     updateResources: function (fresh = false) {
@@ -562,10 +563,10 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
             listArray.push(cor_ru.list.everything);
             listArray.push(cor_ru.list.entityMenu);
             if (Object.hasOwn(cor_ru.list.page, page.dialoguePrefix)) {
-                listArray.push(cor_ru.list.page[page.dialoguePrefix])
                 if (page.dialoguePrefix == "embassy") {
                     listArray.push(cor_ru.list.page.discovery)
                 }
+                listArray.push(cor_ru.list.page[page.dialoguePrefix])
             }
             else if (page.dialoguePrefix != "notfound") console.warn("the page with dialoguePrefix " + page.dialoguePrefix + " does not have a localization! this might be a bug, but might also be intentional or plain expected if you are using other mods - @cor-RU");
             listArray.push(cor_ru.list.load);

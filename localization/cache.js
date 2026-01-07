@@ -28,7 +28,6 @@ env.localization.page['cache'] = {dialogues: {},
         "come tell me back in the hub if you did": "если да - вернись в хаб и расскажи",
         "annoying to talk through proxy": "через прокси говорить неудобно",
         "another productive visit i am sure": "без сомнений еще один продуктивный визит",
-        "DO NOT TAKE TOO LONG PLEASE": "НЕ ЗАДЕРЖИВАЙСЯ, ПОЖАЛУЙСТА",
         "MUCH TO DO": "У МЕНЯ МНОГО ДЕЛ",
         "ok bye": "ладно пока",
         "enter where?": "войти куда?",
@@ -173,37 +172,6 @@ ____END
 `)
 
 // == FUNFRIEND == //
-
-
-env.localization.page['cache'].dialogues[`ff`] = generateDialogueObject(`
-start
-    proxyfriend
-        о.. интересно!
-        я и не думал что ты можешь воспринимать это пространство..
-        это ведь лишь наполовину мыслеформа
-        'внутренний взор' на физические клетки мыслеформ
-        сложно правильно это объяснить
-        если хочется осмотреться - я предоставлю связность
-        просто направь меня к месту, которое хочешь рассмотреть
-
-    self
-        КАК
-    
-    proxyfriend
-        как?
-        достаточно т1Вäфý±ÂßÒÂ£Ë$ü‹kõþвX0×6=Ãyº
-
-    sys
-        ВНИМАНИЕ::'попытка реформирования мысли'
-        АНАЛИЗ::'укажите направление с помощью <span definition="ПРИМЕЧАНИЕ::'лимбический контроль мыслеформы'">ЛКМ</span>'
-        АНАЛИЗ::'помощник будет с фиксированной скоростью перемещаться в сторону указанного местоположения'
-
-    moth
-        о, удобно
-    
-    RESPONSES::self
-        спасибо<+>END
-`)
 
 env.localization.page['cache'].dialogues[`ffozo`] = generateDialogueObject(`
 start
