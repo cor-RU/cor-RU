@@ -7,10 +7,6 @@
     it houses everything that is not dedicated to a particular page. also almost all definitions! fun! we need those to be availiable At All Times due to entmenu stuff
 */
 
-// I'm doing it so the main embassy file may load after the rest of the files
-env.localization.page["embassy"] = {dialogues: {}, definitions: {}, strings: {}, entityDescriptions: {}}
-cor_ru.embassy = {discovery: {}, suspicion: {}, collapse: {}, better_times: {}}
-
 env.localization['definitions'] = {
     // castes 
     "джут": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'инженер';'каста'" },
@@ -130,13 +126,9 @@ env.localization['definitions'] = {
     "глазиками": { "type": "ПЕРЕВОД НЕ УДАЛСЯ", "text": "ПРИЧИНА:'нет эквивалентного внутреннего значения';'нет уместного унаследованного контекста'::УСПЕШНАЯ КИРИЛЛИЗАЦИЯ" },
     "глазиках": { "type": "ПЕРЕВОД НЕ УДАЛСЯ", "text": "ПРИЧИНА:'нет эквивалентного внутреннего значения';'нет уместного унаследованного контекста'::УСПЕШНАЯ КИРИЛЛИЗАЦИЯ" },
 
-    //"": {"type": "", "text": ""},
-
     // misc
     "джокзи озо": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'дом';'крепость на джокзи'"},
     "в паразита": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'простая стратегическая игра про кражи';'любимая игра в олтазни'"},
-    "ОЛО": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": 'близнецовское слово, значащее "судно серое"'},
-    "олтазни": {"type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'дом';'вазнийский пещероград'"},
 
     // terminology
 
@@ -242,7 +234,6 @@ env.localization['strings'] = {
     "BE ON YOUR WAY": "НЕ ОБРАЩАЙ НА МЕНЯ ВНИМАНИЯ",
     "WAIT WHAT ARE YOU DOING": "ЧТО ТЫ ДЕЛАЕШЬ",
     "INTERLOPER!!": "ЛАЗУТЧИК!!",
-    "DO NOT TAKE TOO LONG PLEASE": "НЕ ЗАДЕРЖИВАЙСЯ, ПОЖАЛУЙСТА", // for some reason.
 
     "membrane incision": "надрез мембраны",
 
@@ -582,7 +573,7 @@ env.localization['strings'] = {
     "теперь осталось дождаться пока прибудут наша открывашка контейнеров. можешь сделать перерыв если хочешь, я дам знать когда всё придёт",
 
     "it seems like we could use the stuff in the dendritic container to keep the cyst alive, but i have no idea how we could open it without destroying it. check with funfriend and see if it's got any ideas":
-    "похоже мы могли бы воспользоваться тем что внутри дендритного контейнера, чтобы сохранить цисту в живых, но у меня нет ни малейшего понятия как его открыть. спроси развледруга, есть ли у него идеи",
+    "похоже мы могли бы воспользоваться тем что внутри дендритного контейнера чтобы сохранить цисту в живых, но у меня нет ни малейшего понятия как его открыть. спроси развледруга, есть ли у него идеи",
 
     "well, now we just kill time until my copper tubing order gets here. don't worry, I'll let you know as soon as it's in":
     "ну-с, пока не придёт заказ на медь остается лишь убивать время. не волнуйся, я дам знать как только его доставят",
@@ -1367,36 +1358,6 @@ start
     RESPONSES::self
         завершить вспоминание<+>END
             EXEC::moveTo('/local/ocean/ship/')
-`)
-
-env.localization.dialogues[`ff`] /*from cache*/ = generateDialogueObject(`
-start
-    proxyfriend
-        о.. интересно!
-        я и не думал что ты можешь воспринимать это пространство..
-        это ведь лишь наполовину мыслеформа
-        'внутренний взор' на физические клетки мыслеформ
-        сложно правильно это объяснить
-        если хочется осмотреться - я предоставлю связность
-        просто направь меня к месту, которое хочешь рассмотреть
-
-    self
-        КАК
-    
-    proxyfriend
-        как?
-        достаточно т1Вäфý±ÂßÒÂ£Ë$ü‹kõþвX0×6=Ãyº
-
-    sys
-        ВНИМАНИЕ::'попытка реформирования мысли'
-        АНАЛИЗ::'укажите направление с помощью <span definition="ПРИМЕЧАНИЕ::'лимбический контроль мыслеформы'">ЛКМ</span>'
-        АНАЛИЗ::'помощник будет с фиксированной скоростью перемещаться в сторону указанного местоположения'
-
-    moth
-        о, удобно
-    
-    RESPONSES::self
-        спасибо<+>END
 `)
 
 

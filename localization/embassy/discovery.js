@@ -5,101 +5,33 @@
     > localization/discovery.js
     localization for /local/ocean/embassy --- recollection::discovery
 */
-cor_ru.embassy["discovery"] = {
-definitions: {
-    "экивиками": "'подразумевается этнос';'происходит от названия континента';'экива'",
-    "экивикский": "'подразумевается этнос';'происходит от названия континента';'экива'",
 
-    "благой взор!": "'распространённая идиома';'этот взор велзи - благой';'пожелание удачи'",
-    "да улыбнётся ей велзи": "'распространённая идиома';'сможет рассмешить грозное божество';'религиозный подтекст'",
+strings = {
+}
+entityDescriptions = {
+    "времяостановитель": "'частичный перевод';'унаследованно сгенерированное по описанию существительное'",
+    "времяостановителя": "'частичный перевод';'унаследованно сгенерированное по описанию существительное'",
+    "времяостановителю": "'частичный перевод';'унаследованно сгенерированное по описанию существительное'",
+    "времяостановителем": "'частичный перевод';'унаследованно сгенерированное по описанию существительное'",
+    "времяостановителе": "'частичный перевод';'унаследованно сгенерированное по описанию существительное'",
 
-    "козазни": "'вазнийский пещероград';'дом казки';'известен своими грибными фермами'"
-},
-strings: {
-    "join the chat": "поучаствовать в беседе",
-    "start the meeting": "начать встречу",
+    "эквиками": "'подразумевается этнос';'происходит от названия континента';'экива'",
+    "экивикский": "'подразумевается этнос';'происходит от названия континента';'экива'"
+}
 
-    "rejuvenation chamber": cor_ru.entity_menu["rejuvenation chamber"].name,
-    "kalstik stand": cor_ru.entity_menu["kalstik stand"].name,
-    "face stand": cor_ru.entity_menu["face stand"].name,
-    "cyst cluster": cor_ru.entity_menu["cyst cluster"].name,
-    "cyst pile": cor_ru.entity_menu["cyst pile"].name,
-    "clothing storage": cor_ru.entity_menu["clothing storage"].name,
-    "listener": cor_ru.entity_menu["listener"].name,
-    "timestopper": cor_ru.entity_menu["timestopper"].name,
-    "window": cor_ru.entity_menu["window"].name,
-    "simulacra dispensary": cor_ru.entity_menu["simulacra dispensary"].name,
-    "summarizer": cor_ru.entity_menu["summarizer"].name,
-
-    "my seat": cor_ru.entity_menu["my seat"].name,
-    "orange simulacrum": cor_ru.entity_menu["orange simulacrum"].name,
-},
-entityDescriptions: {
-    "rejuvenation chamber": cor_ru.entity_menu["rejuvenation chamber"].desc,
-    "kalstik stand": cor_ru.entity_menu["kalstik stand"].desc,
-    "face stand": cor_ru.entity_menu["face stand"].desc,
-    "cyst cluster": cor_ru.entity_menu["cyst cluster"].desc,
-    "cyst pile": cor_ru.entity_menu["cyst pile"].desc,
-    "clothing storage": cor_ru.entity_menu["clothing storage"].desc,
-    "listener": cor_ru.entity_menu["listener"].desc,
-    "timestopper": cor_ru.entity_menu["timestopper"].desc,
-    "window": cor_ru.entity_menu["window"].desc,
-    "simulacra dispensary": cor_ru.entity_menu["simulacra dispensary"].desc,
-    "summarizer": cor_ru.entity_menu["summarizer"].desc,
-
-    "my seat": cor_ru.entity_menu["my seat"].desc,
-    "orange simulacrum": cor_ru.entity_menu["orange simulacrum"].desc,
-}}
+env.localization.page['embassy'].strings = {...env.localization.page['embassy'].strings, ...strings}
+env.localization.page['embassy'].entityDescriptions = {...env.localization.page['embassy'].entityDescriptions, ...entityDescriptions}
 
 // === DIALOGUES === //
 
 // == DISCOVERY --- DAY 1 == //
-
-env.localization.page['embassy'].dialogues["d1_akizet"] = generateDialogueObject(` 
-start
-    sourceless
-        стоит встретиться с командой... фокус совсем скоро
-            SHOWIF::["PAGE!!beenToResearch", false]
-        перед тем как начнём, надо бы найти казки и бозко..
-            SHOWIF::[["PAGE!!d1_kbcollected", false], ["PAGE!!beenToResearch", true]]
-        время начинать встречу! моё кресло около дальних от двери слушателей
-            SHOWIF::[["PAGE!!d1_kbcollected", true], ["PAGE!!beenToResearch", true]]
-
-    RESPONSES::akizet
-        вернуться к работе<+>END
-    
-    RESPONSES::self
-        попробовать поговорить<+>interact
-            SHOWONCE::
-
-interact
-    self
-        алё, акизет?
-        как слышно?
-
-    moth
-        а???
-        тьфу ты.. дошло
-
-    sourceless
-        ...
-
-    moth
-        вряд-ли это сработает
-        мыслеформа слишком связная
-        если найдём какой способ повреждать мыслеформы - стоит попробовать ещё раз
-        но что-то мне подсказывает что развледруг наших стараний не оценит
-    
-    RESPONSES::self
-        блин<+>END
-`)
 
 env.localization.page['embassy'].dialogues["d1_start"] = generateDialogueObject(` 
 start
     sourceless
         ко мне возвращается сознание
         камера восстановления раскрывается, впуская внутрь свет цистозных стёкол посольства
-        чрез далёкое открытие серое я чувствую, что начался новый θвзор
+        чрез далёкое открытие серое я чувствую что начался новый 0взор
 
     RESPONSES::akizet
         выйти из камеры<+>emerge
@@ -108,265 +40,16 @@ start
 emerge
     sourceless
         я вылезаю из камеры. моё тело куу было обновлено и восстановлено
-        теперь оно ощущается прямо как в θмиг моего вознесения
+        теперь оно ощущается прямо как в 0миг моего вознесения
         то редкое, любимое ощущение всемогущества - возможности изменить это тело как заблагорассудится
-        пожалуй мне стоит вернуться к работе..
-        близится фокус-встреча инициативы исследования зова
+        однако стоит вернуться к работе..
+        близится фокусировочная встреча инициативы исследования зова
         необычная встреча - в этот раз нам предоставили преинтереснейшее оборудование!
         стоит поскорее собрать команду.
     
     RESPONSES::akizet
         к трудовым свершениям!<+>END
 `)
-
-/* ECHOFRIEND DIALOGUES */
-
-env.localization.page['embassy'].dialogues.barfriendresp = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::akizet
-        апельсинового сока<+>orange
-        не важно<+>END
-            EXEC::pauseSwapCam(false)
-`)
-
-env.localization.page['embassy'].dialogues["barfriend"] = generateDialogueObject(`
-start
-    sourceless
-        выпейдруг стоит перед стойкой, полной симулякр
-            EXEC::pauseSwapCam(true)
-        у меня нечасто появляется желание ими воспользоваться
-        однако 'нечасто' не значит 'никогда'
-____SHOWIF::[["netstat|<", 0], ["citystreet_gotdrinks"]]
-        вспоминается тот ароматизированный напиток из города гордона..
-        как бы ужасен он ни был
-        ему удалось что-то во мне пробудить
-____SHOWIF::[["netstat|>=", 0]]
-        ещё один θвзор, встреченный мной в этом светлом мире...
-        возьму, пожалуй, напиток под стать ему
-____END
-    
-    akizet
-        выпейдруг!
-    
-    barfriend
-        ПРИВЕТ АКИЗЕТЕШЕ
-
-    RESPOBJ::barfriendresp
-
-orange
-    sourceless
-        точно... <span definition="ПРИМЕЧАНИЕ::'перевода не потребовалось'">АПЕЛЬСИНОВЫЙ СОК</span>
-        его-то мне и хочется
-        экзотичного вкуса--и обилия лимонной кислоты!
-
-    akizet
-        симулякр апельсинового сока, пожалуйста
-    
-    barfriend
-        хорошо!
-    
-    sourceless
-        выпейдруг щупальцем касается стойки с апельсиновым симулякром
-        щупальце проходит сквозь стекло как рука сквозь воду
-        из него формируется округлая чаша, светящаяся апельсиновым соком
-        пусть настоящий апельсиновый сок и не светится
-____SHOWIF::[["netstat|<", 0]]
-        выглядит чаша потрясно
-____SHOWIF::[["netstat|>=", 0]]
-        свечение напоминает таковое у зрелого сельки
-        что вкусу подходит
-____END
-    
-    barfriend
-        держи!
-            EXEC::env.stage.querySelectorAll('.drinklayer').forEach(e=>e.setAttribute('drink', 'orange'));content.querySelectorAll('.drinklayer').forEach(e=>e.setAttribute('drink', 'orange'))
-        приятного вспоминания!!
-    
-    akizet
-        спасибо, выпейдруг
-
-    RESPONSES::akizet
-        отойти<+>END
-            EXEC::pauseSwapCam(false)
-`)
-
-/* relocator */
-env.localization.page['embassy'].dialogues.embassyRelocatorResponses = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::akizet
-        покои<+>personnel
-            SHOWIF::[['EXEC::env.embassy.relocatorReturn != \`personnel\`']]
-            HIDEREAD::
-        зона отдыха<+>recreation
-            SHOWIF::[['EXEC::env.embassy.relocatorReturn != \`recreation\`']]
-            HIDEREAD::
-        исследование зова<+>research
-            SHOWIF::[['EXEC::env.embassy.relocatorReturn != \`research\`'], ['EXEC::check(\`PAGE!!embassy_day\`) != -1']]
-            HIDEREAD::
-        исследование зова<+>researchno
-            SHOWIF::[['EXEC::env.embassy.relocatorReturn != \`research\`'], ['PAGE!!embassy_day', -1], ["PAGE!!movekoa", false]]
-            HIDEREAD::
-        не важно<+>END
-            EXEC::pauseSwapCam(false);
-`)
-
-env.localization.page['embassy'].dialogues["embassyRelocator"] = generateDialogueObject(`
-start
-    movefriend
-        ПРИВЕТ АКИЗЕТЕШЕ!
-            EXEC::pauseSwapCam(true)
-        КУДА?
-    
-    RESPOBJ::embassyRelocatorResponses
-
-personnel
-    akizet
-        в покои
-
-    movefriend
-        ХОРОШО!
-    
-    sourceless
-        за мной закрывается путь к релокатору
-        через мгновение на месте старого прохода появляется новый
-            EXEC::env.embassy.relocatorDestination('personnel')
-
-    movefriend
-        УВИДИМСЯ!
-    
-    RESPONSES::akizet
-        спасибо<+>END
-            EXEC::pauseSwapCam(false)
-
-recreation
-    akizet
-        в нижнюю зону отдыха
-
-    movefriend
-        ХОРОШО!
-    
-    sourceless
-        за мной закрывается путь к релокатору
-        через мгновение на месте старого прохода появляется новый
-            EXEC::env.embassy.relocatorDestination('recreation')
-
-    movefriend
-        ПРИЯТНОГО ОТДЫХА!
-    
-    RESPONSES::akizet
-        спасибо<+>END
-            EXEC::pauseSwapCam(false)
-
-research
-    akizet
-        в центр исследования зова
-
-    movefriend
-        ХОРОШО!
-    
-    sourceless
-        за мной закрывается путь к релокатору
-        через мгновение на месте старого прохода появляется новый
-            EXEC::env.embassy.relocatorDestination('research')
-
-    movefriend
-        ПРИЯТНОЙ РАБОТЫ!
-    
-    RESPONSES::akizet
-        спасибо<+>END
-            EXEC::pauseSwapCam(false)
-
-researchno
-    akizet
-        в центр исследования зова
-    
-    movefriend
-        ХОРОШО!
-
-    sourceless
-        за мной закрывается путь к релокатору
-        но новый путь почему-то не спешит открываться
-
-    movefriend
-        ОЙ! ТОЧНО
-
-    sourceless
-        из трансподруга выходит рой маленьких люминесцентных частиц
-        к моему удивлению, этот рой формирует передо мной сигил структуразума
-
-    groundsmind
-        акизетеше
-    
-    sourceless
-        что-то сломалось?!
-        похоже что-то пошло совсем не по плану...
-        я знала--знала что можно доверять своим инстинктам
-        за тихим ползком всегда следует стремительная атака
-        праздновать победу до конца битвы - прямое приглашение к гибельному свету велзи
-    
-    groundsmind
-        тебе вообще-то кое-где полагается быть
-        не время волноваться за приборы
-
-    akizet
-        чего?..
-    
-    sourceless
-        я сказала это не подумав
-        на мгновение я лишилась всех приличий
-
-    akizet
-        извиняюсь, векоа, но я думала что мне понадобится убедиться в..
-
-    groundsmind
-        я со всем разберусь сама
-
-    sourceless
-        и снова я целый θмиг не могу найти у себя слов
-        это наказание? 
-        случилась настолько серьёзная ошибка, что мне не доверяют в её исправлении?
-        мои рецепторы должно быть от дискомфорта свернулись в катушки
-        из трансподруга внезапно выходит тихий звук, похожий на вздох
-    
-    groundsmind
-        прошу от тебя не прерывать данного ростка секретности
-        твой тир умудрилась взять с меня обещание
-        что я помешаю тебе войти в исследовательский центр, пока не завершатся празднования
-        
-    akizet
-        она--что?..
-
-    groundsmind
-        было бы глупо отказывать тиру, тем более когда он обеспокоен состоянием другого
-        неважно сколь непостоянными или бесполезными тиры могут казаться
-        они всегда знают что лучше
-        иди же. у меня много работы
-
-    akizet
-        я.. ясно
-        тогда прощай
-    
-    sourceless
-        сигил исчезает
-        ошеломлённая, я остаюсь наедине с трансподругом
-
-    movefriend
-        ХОРОШО
-        ЗОНА ОТДЫХА ТАК ЗОНА ОТДЫХА!
-    
-    sourceless
-        на месте старого прохода появляется новый
-            EXEC::env.embassy.relocatorDestination('recreation')
-        уверена что структуразум справится с повреждениями, её же когтями и вызванными
-
-    movefriend
-        ПРИЯТНОГО ОТДЫХА!
-
-    RESPONSES::akizet
-        спасибо...<+>END
-            EXEC::change("PAGE!!movekoa", true)
-`)
-
 
 /* DAY 1 - TOZIK */
 env.localization.page['embassy'].dialogues["d1_tozik"] = generateDialogueObject(` 
@@ -384,7 +67,7 @@ start
     sourceless
         он показывает, что меня заметил, ненадолго встречаясь со мною взором
             EXEC::vnp({hideStage: true, tozik: "show"})
-        впрочем внимание его целиком и полностью направлено внутрь - к соединению с корруцистозной веной
+        впрочем внимание его целиком и полностью направленно внутрь - к соединению с корруцистозной веной
         тозик не любит болтать просто так, потому я стараюсь не затягивать разговор
     
     akizet
@@ -394,7 +77,7 @@ start
     tozik
         да
         реорганизую соединённые архивные цисты
-        буквально θподмиг назад произошло нечто интересное
+        буквально 0подмиг назад произошло нечто интересное
         на фокусе и обсудим
     
     akizet
@@ -493,7 +176,7 @@ complaint
         
     sourceless
         я смеюсь, и отрицательно машу руками и рецепторами
-        она тоже начинает смеяться--я одна из немногих в команде понимаю её сухой экивикский юмор
+        она тоже начинает смеяться--я почти уверена что ей нравится, что я понимаю сухой экивикский юмор
         
     akizet
         нет-нет, гакву...
@@ -536,7 +219,7 @@ false
         иначе раздавит за воздушной границей!
 
     sourceless
-        судя по жестикуляции её рук и рецепторов,
+        судя по жестикуляциям её рук и рецепторов,
         она пытается со мной сторговаться
     
     akizet
@@ -608,16 +291,16 @@ coat
 env.localization.page['embassy'].dialogues["d1_cavikresp"] = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::akizet
-        близится фокус<+>focus
-        теория закрытой петли?<+>theory
-        как дела?<+>talk
+        our focus approaches<+>focus
+        closed loop theory?<+>theory
+        anything happening?<+>talk
         пока всё<+>END
             EXEC::pauseSwapCam(false);vn.done()
 `)
 env.localization.page['embassy'].dialogues["d1_cavik"] = generateDialogueObject(` 
 start
     sourceless
-        КАВИК РАБОТАЕТ С АРХИВНЫМИ ЦИСТАМИ, ПЕРИОДИЧЕСКИ ЗАКРЕПЛЯЯ ИХ НА МОЩНОМ РЕЦЕПТОРЕ
+        КАВИК РАБОТАЕТ С АРХИВНЫМИ ЦИСТАМИ, ИНОГДА ЗАКРЕПЛЯЯ ИХ НА МОЩНОМ РЕЦЕПТОРЕ
             EXEC::pauseSwapCam(true);
         ЦИСТЫ АККУРАТНО РАЗЛОЖЕНЫ ПО КУЧКАМ В ЗАВИСИМОСТИ ОТ ОТТЕНКА ИХ ВНУТРЕННОСТЕЙ
         ЕГО РЕГУЛЯРНОЕ ОБСЛУЖИВАНИЕ НЕ ДОПУСКАЕТ ТОГО, ЧТОБЫ ХОТЬ ОДНА СТАЛА СЛИШКОМ ТЁМНОЙ ИЛИ ОГОЛОДАЛА
@@ -628,12 +311,12 @@ start
         акизет! благой взор!
             
     akizet
-        и тебе, друг мой
+        и тебе того же, друг мой
         чем занят?
 
     cavik
         да просто обслуживаю старые архивные цисты
-        а вместе с тем их изучаю! ох, какие же раньше предлагались безумные обескоцентричные теории!
+        а вместе с тем вспоминаю! ох, какие же раньше предлагались безумные обескоцентричные теории!
         долго думал, значит, над одной из них--не абы какой, а совместной теорией сероетеше и азкавинеше!
         назвали они её 'закрытая петля' - не слышала, случаем?
     
@@ -667,132 +350,131 @@ focus
         без сомнений!
     
     akizet
-        не слишком сильно волнуйся, друг мой
-        встреча планируется не столь важная
+        не слишком сильно волнуйся, you do not need to press yourself, my friend
+        it is a simple one
     
     cavik
-        знаю.. просто не люблю оказываться в подобных ситуациях
-        на этот раз мне поделиться будет нечем... тем не менее, я подготовлюсь!
+        i know, i just hate when this happens
+        i do not have anything to bring this time... but i will be ready!
     
     akizet
-        замечательно
+        excellent
     
     RESPOBJ::d1_cavikresp
     
 theory
     sourceless
-        Я БЫ НЕ ХОТЕЛА СБИВАТЬ ЕГО ИССЛЕДОВАТЕЛЬСКИЙ НАСТРОЙ
-        НО ЦЕННОСТИ В ЭТИХ РАННИХ ТЕОРИЯХ МЕНЬШЕ ЧЕМ В <span definition="ПРИМЕЧАНИЕ::'частичный перевод';'сгенерировано подходящее по описанию существительное'">ГНИЛИ СТЕННОЙ</span>
-        ОСОБЕННО КОГДА РЕЧЬ ЗАХОДИТ О ТЕОРИЯХ СЕРОЕТЕШЕ, ДА УЛЫБНЁТСЯ ЕЙ ВЕЛЗИ
+        I WOULD PREFER NOT TO CRUSH HIS INVESTIGATIVE SPIRIT
+        BUT THESE EARLY THEORIES CARRY LESS WORTH THAN <span definition="NOTE::'partial translation';'inherited description-generated noun'">WALL-ROT</span>
+        ESPECIALLY DULLZKOVIK'S, VELZIE'S SMILE UPON HIM
     
     akizet
-        теория закрытой петли..
-        это случаем не та с манипуляци--
+        closed loop...
+        is that the time--
     
     cavik
-        да, манипуляцией временем!! давай напомню!
-        сероетеше заявила, что рано или поздно мы научимся пользоваться пространством серое для путешествий во времени
-        а потому, когда мы и наши потомки в далёком будущем найдём опустелый дом светлых близнецов
-        то сможем создать открытие серое достаточно крупное, чтобы послать самим себе сигнал в прошлое, указывающий на Землю!
+        time manipulation!! yes! let me remind you! 
+        dullzkovik posited that one era... we learn to use the dull plane to traverse space four-dimensionally
+        and our future selves eventually discover the home of the bright cousins, but far too late to meet them
+        so--we create a contrivance just big enough to release a message to ourselves and signal its location!
 
     sourceless
-        ОЙ КАВИК..
-        Я ЗАДУМЧИВО ГНУ СВОИ РЕЦЕПТОРЫ, НЕВОЛЬНО ОБНАЖАЯ СВОЙ СКЕПСИС
+        OH, CAVIK
+        I TWIST MY RECEPTORS THOUGHTLESSLY, ACCIDENTALLY BARING MY SKEPTICISM
         
     cavik
-        слушай--я понимаю, что тебе эта идея кажется чрезвычайно глупой..
-        она и впрямь весьма сомнительна.. пожалуй даже недоказуема
-        но в то же время подумай - разве она не неизбежна?
-        в θсмерти нашей, времени хватит на раскрытие любой тайны--даже путешествий во времени!
+        now--i know you must think it is ridiculous, 
+        and it is! especially as it goes on, hehe
+        but is it not inevitable at the same time?
+        in our θdeaths, there is enough time to unravel any mystery--time manipulation included!
     
     akizet
-        во первых..
-        мне кажется на момент создания этой теории сероетеше не совсем понимала все последствия создания открытия серое внутри планеты
-        в конце-концов, эта теория появилась задолго до происшествия с общей луною
-        во вторых - если мы когда и освоим путешествия во времени...
-        что совершенно не гарантированно
-        то в первую очередь они будут использованы для устранения многочисленных ошибок, что сделали наш мир таким, каков он есть
+        first...
+        i do not think dullzkovik understood the full implication of creating a contrivance inside a planet at that point
+        that was before the incident with the shared moon, you know
+        and, time manipulation... 
+        if we ever were to manage it,
+        the mistakes that created us and our world would be gradually undone to right old wrongs
     
     cavik
-        но ведь мы этого 'устранения' бы не заметили? мы бы лишь жили в мире, где этих ошибок нет!
-        не пойми меня неправильно - всерьёз защищать я эту теорию не намерен
-        для меня это всего лишь ещё одна забавная гипотеза из былых времён
+        but we would never know if it was happening, would we? it would just 'be'!
+        anyway, i will not seriously debate it with you--it is just a bit of fun
     
     sourceless
-        И ВСЁ ЖЕ СТОИТ УБЕДИТЬСЯ..
+        TO BE SURE...
     
     akizet
-        конечно-конечно!
-        значит и с близнецами ты делиться этой теорией не намерен?
+        yes, of course!
+        and--you are not going to share this with any cousins, correct?
 
     sourceless
-        ОН ЗАСЛОНЯЕТ СВОИ РЕЦЕПТОРЫ АРХИВНОЙ ЦИСТОЙ, НО Я ВСЁ РАВНО ЗАМЕЧАЮ СКРЫВАЕМОЕ ИМ РАЗОЧАРОВАНИЕ
-        СКОЛЬ СКУПОЙ И ЖЕСТОКОЙ Я ДОЛЖНО БЫТЬ СЕЙЧАС ВЫГЛЯЖУ.. БЫЛАЯ Я СО МНОЮ ТЕПЕРЕШНЕЙ НАВЕРНОЕ ПРОСТО ОТКАЗАЛАСЬ БЫ ОБЩАТЬСЯ
-        НО Я ГОТОВА СДЕЛАТЬ ВСЁ ВОЗМОЖНОЕ, ЛИШЬ БЫ ИЗБЕЖАТЬ ЕЩЁ ОДНОГО ДИПЛОМАТИЧЕСКОГО ИНЦИДЕНТА
+        I SEE THE DEJECTION EVEN AS HE TRIES TO HIDE IT BENEATH AN ARCHIVAL CYST
+        HOW JOYLESS I MUST SEEM, SUCH A TERRIBLE INVERSION OF OUR YOUTH
+        BUT I REALLY WOULD PREFER NOT NEEDING TO FIX ANOTHER OVERSHARING INCIDENT
     
     cavik
-        аки...
-        о том, чтобы делиться <em>этой</em> теорией я и думать не думал.
-        неужели ты мне настолько не доверяешь?
-        я знаю, что совершил ошибку, но--
+        aki...
+        i would not seriously entertain sharing <em>this</em> one.
+        did you really think that?
+        i know i made an incorrect step, but
     
     akizet
-        кавик, кавик! будь ясен, я тебе доверяю
-        но ты сам знаешь, какая напряжённая у нас сейчас сложилась обстановка..
-        прошу понять меня и простить.
+        cavik, cavik! i trust you, be at ease
+        you know how i must be during these times
+        do not feel at fault
     
     cavik
-        конечно, я понимаю..
+        of course, no, no, i understand
 
     sourceless
-        ¥ИÁÈшæб4
-        ТЕПЕРЬ МЕНЯ БУДЕТ ПРЕСЛЕДОВАТЬ ЕЩЁ ОДНА МАЛЕНЬКАЯ СМЕРТЬ
+        ¥IÁÈiæb4
+        ANOTHER LITTLE DEATH TO HAUNT ME
     
     RESPOBJ::d1_cavikresp
 
 talk
     akizet
-        кавик, друг мой, скажи
-        какие несёшь ты с собою вести?
-        радует ли тебя занятая тобою роль?
-        в последнее время у нас совсем не было возможности поговорить о чём-то кроме работы
+        cavik, my friend, tell me
+        what news do you carry?
+        have you been enjoying your role?
+        it is not often that we have time to speak plainly anymore
 
     cavik
-        конечно радует! океаны просто завораживают - ни единого общего с морями нашего дома
-        взять одни хоть артефакты, что близнецы в таких больших количествах оставили в воде!
-        на наших экспедициях осмотреть наши вместилища хочет столько разнообразных существ
-        бозко не рассказывал тебе об одном из них, которого забрал себе?
+        i have! the oceans are truly mesmerizing, nothing at all like home
+        you should see all the artifacts that the cousins have simply left to the water!
+        and on our expeditions, so many little creatures come up to examine our vessels
+        has bozko told you about the one he has taken?
     
     sourceless
-        В ЕГО ГОЛОСЕ СЛЫШНО ЭХО ЛИЧИНОЧНОЙ РАДОСТИ
-        ЧЕРЕЗ МИГ ОНО УГАСАЕТ, КОГДА К НЕМУ ПРИХОДИТ ПОНИМАНИЕ, ЧТО ОБ ЭТОМ ГОВОРИТЬ НЕ СТОИЛО
+        FOR THAT MOMENT I HEARD AN ECHO OF LARVAL JOY IN HIS VOICE
+        BUT IN THE SUBTLE TURN OF A RECEPTOR, I SEE HE FEELS HE SHOULD NOT HAVE SAID THAT
     
     cavik
-        это же разрешено, да?
-        если что - о том вейльки шепчутся, я ничего не говорил
+        that is fine, right?
+        you heard that from a veilk's whisper, not me
     
     akizet
-        ахаха! конечно разрешено!
-        точнее, не совсем - структуразум ведь говорила что на это могут обидеться близнецы..
-        но мне, если честно, всё равно
-        скажи лучше - как там продвигается твоя работа над проектом <span definition="ПРИМЕЧАНИЕ::'частичный перевод';'сгенерировано подходящее по описанию существительное'">капсул жизни</span>?
+        haha! it is! it is perfectly fine
+        well, the groundsmind says we should not, since the cousins could get mad, but...
+        i do not really care
+        tell me - have you contributed any more to the <span definition="NOTE::'partial translation';'inherited description-generated noun'">life-pod</span> project?
     
     cavik
-        а! да никак, пока совсем нет времени участвовать в проекте
-        но за вестями я слежу - недавно услышал, что удалось успешно переместить 'зёрнышко' на обескию
-        его, понятное дело, пока держат в карантине - с ним могло произойти всё что угодно
-        но сам факт того, что такое перемещение возможно вселяет в проект большие надежды
-        пусть пока что для защиты объектов и требуются цисты размером с трёх куу!
+        ahh! no! not in some time
+        but i hear they recently succeeded in sending a 'grain' back to obeski
+        it is, of course, being held in deep quarantine, but...
+        that it worked is promising alone
+        even if the cyst itself was bigger than both of us combined!
 
     akizet
-        потрясающе. пожалуй мне стоит ознакомиться с деталями проекта
-        думаю обмен органическими материалами серьёзно бы ускорил развитие дипломатических отношений
-        если найдёшь свободный θвзор - не забудь заглянуть в отдел разработки!
-        в последний раз как говорила с их командой, о тебе очень лестно отзывались - спрашивали когда вернёшься
+        remarkable, i must check in with them to see how they did it
+        as trade continues, i imagine that organic materials will be the next leap in relations
+        if you find the time again, you should join the effort!
+        last i spoke with the team, they asked when they would see you again
     
     cavik
-        правда??
-        что-ж! тогда, полагаю, этот мифический 'свободный взор' мне стоит найти как можно скорее!
+        really??
+        i should! i will check in again with them!
     
     RESPOBJ::d1_cavikresp
 `)
@@ -801,234 +483,234 @@ talk
 env.localization.page['embassy'].dialogues["d1_kazkibozkoresp"] = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::akizet
-        близится фокус<+>focus
+        our focus approaches<+>focus
             EXEC::change('PAGE!!d1_kbcollected', true)
-        о чём общаетесь?<+>story
-        какие вести?<+>talk
-        пока всё<+>END
+        what was that about?<+>story
+        anything happening?<+>talk
+        fare well for now<+>END
             EXEC::specialCam(false);pauseSwapCam(false);vn.done()
 `)
 
 env.localization.page['embassy'].dialogues["d1_kazkibozko"] = generateDialogueObject(` 
 start
     sourceless
-        БОЗКО И КАЗКИ СТОЯТ ОКОЛО ВНУТРЕННЕЙ СТЕНЫ. ИХ НЕГРОМКИЙ ДИАЛОГ ЗАГЛУШЁН ШУМОМ ОСТАЛЬНЫХ ОТДЫХАЮЩИХ
+        BOZKO AND KAZKI IDLE NEAR THE INNER WALL, THEIR CHATTER DROWNED OUT BY THE NUMEROUS OTHERS NEARBY
             EXEC::pauseSwapCam(true);
-        КАЗКИ АКТИВНО ЖЕСТИКУЛИРУЕТ СВОИМИ РУКАМИ И ВЕТВЯЩИМИСЯ РЕЦЕПТОРАМИ, ЧТО-ТО РАССКАЗЫВАЯ БОЗКО
-        БОЗКО, В СВОЮ ОЧЕРЕДЬ, ВНИМАТЕЛЬНО СМОТРИТ В <span definition="ПРИМЕЧАНИЕ::'частичный перевод';'подразумевается ближайший культурный эквивалент';'механизм'">ОКНО</span> И НАХОДЯЩЕЕСЯ ЗА НИМ ИССЛЕДОВАТЕЛЬСКОЕ СУДНО БЛИЗНЕЦОВ
-        Я ПОДХОЖУ БЛИЖЕ. ТЕПЕРЬ СЛОВА КАЗКИ РАЗЛИЧИТЬ ГОРАЗДО ЛЕГЧЕ
+        KAZKI'S BRANCHED RECEPTORS GESTICULATE AS WILDLY AS HER HANDS WHILE SHE SPEAKS TO BOZKO
+        HIS FOCUS LIES MOSTLY UPON THE <span definition="NOTE::'partial translation';'implied closest functional equivalent';'technological implication'">WINDOW</span>, OBSERVING THE COUSINS' RESEARCH VESSEL
+        HER TALE BECOMES MORE DISTINCT AS I APPROACH
     
     kazki
-        ... ну я и сказала, что это от того, что в личиночном облике я была тиром! рассказала что это значит, чем тиры занимаются...
-        вскользь упомянула ту историю с раскопок козазни.. ну, помнишь наверное--ещё когда я только начинала там работать
+        ... so i said, it is because my larval form was tir! and i told him of the function that entails...
+        i even talked a little about that story from the kozazni excavation--you know the one, ah, when i was first starting work there
     
     bozko
-        ой-ой..
+        oh, no
 
     kazki
-        пока я рассказывала эту историю, меня всё о чём-то пытался предупредить развледруг. понятное дело, я была занята разговором, и потому не обратила на него внимания...
-        а когда посмотрела о чём он там предупреждал - оказалось что развледруг уговаривал меня замолчать и за что-то извиниться!
-        я в начале не поняла в чём дело, а потом посмотрела на лицо близнеца.. как же он оказывается перепугался! мне кажется реши я его в кислоте искупать - он и то отреагировал бы спокойнее!
-        ахахаха!!
+        and while i was saying these things, my funfriend was attempting to warn me about something, but i kept talking...
+        and then when i was done, i checked to see what it was, and it was telling me to stop! 
+        he was apparently expressing terror on his face! as though i might drench him in acid at random! 
+        ahahaha!!
 
     sourceless
-        БОЗКО ИЗДАЁТ СМЕШОК И СЛЕГКА СКРУЧИВАЕТ СВОИ РЕЦЕПТОРЫ
-        ОН ПЕРЕВОДИТ ВЗГЛЯД С ОКНА НА КАЗКИ, И ВНЕЗАПНО ЗАМЕЧАЕТ МЕНЯ
-        ОБА ВСТРЕЧАЮТ МЕНЯ ЛЁГКИМ ДВИЖЕНИЕМ РЕЦЕПТОРОВ
+        BOZKO CHUCKLES AND ROLLS HIS RECEPTORS SLIGHTLY
+        HE LOOKS FROM THE WINDOW TO KAZKI, WITNESSING MY APPROACH INCIDENTALLY
+        WITH ANOTHER LITTLE RECEPTOR GESTURE, KAZKI TURNS TO FACE ME AS WELL, DELIGHTED
             EXEC::specialCam('kazkibozko');vnp({bg: true, kazki: "show", bozko: "show"})
 
     bozko
-        приветствую, акизет
+        hello, akizet
 
     kazki
-        привет, акизет!!
+        hi akizet!!
     
     akizet
-        привет, друзья
+        hello my friends
     
     RESPOBJ::d1_kazkibozkoresp
     
 story
     sourceless
-        Я НЕ МОГУ СДЕРЖАТЬ ЛЮБОПЫТСТВА
-        СОБЫТИЯ В ИСТОРИЯХ КАЗКИ, КОНЕЧНО, ВСЕГДА ПРЕУВЕЛИЧЕНЫ, НО ОТЧАСТИ ИМЕННО ПОЭТОМУ ПРО НИХ ТАК ИНТЕРЕСНО СЛУШАТЬ
+        I CANNOT CONTAIN MY CURIOSITY
+        KAZKI'S STORIES, EVEN IF HYPERBOLIC, ARE ALWAYS ENTERTAINING
 
     akizet
-        о чём рассказывала, казки?
+        what was that story you were telling, kazki?
     
     sourceless
-        ЕЁ ВЕТВЯЩИЕСЯ РЕЦЕПТОРЫ В ВОЗБУЖДЕНИИ РАСКРЫВАЮТСЯ ВЕЕРОМ
+        HER BRANCHED RECEPTORS FAN OUTWARDS EXCITEDLY
 
     kazki
-        а! да я недавно тут была в государстве австралия!
-        там была встреча по шпилям полигонации, видишь ли
-        сама встреча прошла хорошо, а вот после неё произошёл инцидент... мой контактный раньше никогда не встречал бывших тиров,
-        и решил задать пару вопросов, не связанных с утверждением постройки
-        в основном о моих рецепторах...
-        а!! кстати об этом! постройку шпилей утвердили!
+        ah! i was in the nation of australia recently! 
+        for the polygonation spire meeting, you see
+        it went well, but my contact was curious, because he had not seen a once-tir before, 
+        and so he had a number of questions unrelated to the construction approval
+        mostly about my receptors...
+        which!! by the way! the construction was approved!
     
     bozko
-        по насмешке велзи, нашей казки пришла в голову замечательная идея рассказать ему о своей ранней личиночной работе
+        through some giggle of velzie, it occurred to her to share the events of her early larval work
     
     sourceless
-        РАСКОПКИ КОЗАЗНИ...
-        НЕУДИВИТЕЛЬНО, ЧТО СВЕТЛОМУ БЛИЗНЕЦУ ТАК ПОПЛОХЕЛО ОТ ЭТОЙ ИСТОРИИ
+        THE KOZAZNI EXCAVATION STORY...
+        OF COURSE A CLUELESS BRIGHT COUSIN WOULD FEAR FOR THEIR LIFE AFTER HEARING THAT
 
     kazki
-        да нет в этом ничего такого! когда я ему всё объяснила он даже рассмеялся!
+        it was in good nature! he found it funny after i explained away his fears!
     
     akizet
-        с великим уважением тебе это говорю, казки..
-        я не представляю как тебе удаётся добиваться таких дипломатических успехов,
-        так щедро делясь с близнецами информацией о нас и нашем доме
+        i say this with a deep respect, kazki,
+        with how much you share so readily with the cousins,
+        your diplomatic successes always come as a surprise
 
     RESPOBJ::d1_kazkibozkoresp
     
 talk
     akizet
-        друзья мои, несёте ли вы с собою вести?
-        личного толку, понятное дело
-        о работе поговорим на ближайшем фокусе
+        my friends, what news do you carry?
+        for yourselves, of course
+        we have the imminent focus to share our works
     
     sourceless
-        БОЗКО СМОТРИТ СКВОЗЬ ПРЕДСТАВЛЕНИЕ <span definition="ПРИМЕЧАНИЕ::'частичный перевод';'подразумевается ближайший культурный эквивалент';'механизм'">ОКНА</span>
+        BOZKO PEERS INTO THE ESTIMATION OF THE <span definition="NOTE::'partial translation';'implied closest functional equivalent';'technological implication'">WINDOW</span>
     
     bozko
-        личного толку..
-        я недавно наблюдал за местными водными созданиями
-        с помощью пары <span definition="ПРИМЕЧАНИЕ::'частичный перевод';'подразумевается ближайший культурный эквивалент'">големов</span> с передатчиками
-        посмотри только на это--видишь, как они формируют высокоорганизованные облака?
+        outside of our works,
+        i have been observing the creatures of the water nearby
+        a few dispatched <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">golems</span> with relays
+        here, look at this--see how they form great organized clouds?
 
     sourceless
-        БОЗКО ПОГРУЖАЕТ РУКУ В ОКНО, ИСКАЖАЯ ТЕМ САМЫМ ПРОЕКЦИЮ, ЧТОБЫ ВЫТЯНУТЬ ИЗ ВНУТРЕННЕГО ХРАНИЛИЩА ОКНА СОЕДИНИТЕЛЬНУЮ ЦИСТУ
+        BOZKO REACHES INTO THE WINDOW, DISRUPTING THE DISPLAY, TO PULL A CONNECTIVE CYST FROM ITS INTERNAL DOCK
             EXEC::content.classList.add('bozkoceptor');vnp({fade: true})
-        ОН ЗАКРЕПЛЯЕТ ЕЁ НА РЕЦЕПТОРЕ, И ВЫВОДИТ ВОСПОМИНАНИЕ НА ВЫВОД
-        МЕМБРАНА ОКНА КОЛЫШЕТСЯ И МЕНЯЕТ ЦВЕТА, ЧЕРЕЗ ПАРУ МГНОВЕНИЙ ЗАМИРАЯ В ДЕМОНСТРАЦИИ ПРОЕКЦИИ БОЗКО
+        HE AFFIXES IT TO HIS CLOSEST RECEPTOR, AND ADJUSTS THE DISPLAY TO A RECOLLECTION
+        THE WINDOW'S COLORS RIPPLE UNTIL THEY FIX UPON A MENTAL PROJECTION
             EXEC::content.classList.add('fishies')
-        НА НЕЙ ДЕЙСТВИТЕЛЬНО МОЖНО РАЗЛИЧИТЬ ОБЛАКО БЕЗУПРЕЧНО СКООРДИНИРОВАННЫХ ВОДНЫХ СУЩЕСТВ
-        КАК ЖЕ У НИХ ЭТО ВЫХОДИТ? 
+        IT IS AS HE SAYS - A CLOUD OF IMPECCABLY ORIENTED WATER INHABITANTS
+        HOW DO THEY DO IT? 
 
     akizet
-        потрясающе
+        remarkable
 
     bozko
-        я не единственный наблюдатель существ этого светлого мира
+        and i am not the sole observer of the bright world's creatures among us
     
     sourceless
-        БОЗКО ВОЗВРАЩАЕТ СОЕДИНИТЕЛЬ ВНУТРЬ ОКНА
+        BOZKO RETURNS THE CONNECTOR BENEATH THE WINDOW'S SURFACE
             EXEC::content.classList.remove('bozkoceptor')
-        ПРОЕКЦИЯ ТОЖЕ ВСКОРЕ РАЗВЕИВАЕТСЯ
+        THE IMAGE SOON DISSIPATES
             EXEC::content.classList.remove('fishies');vnp({fade: false})
-        ПОСЛЕ НЕКОТОРЫХ РАЗДУМИЙ, ОН С НАСМЕШКОЙ УКАЗЫВАЕТ НА КАЗКИ
+        HE GESTURES TOWARDS KAZKI TEASINGLY AFTER A MOMENT'S SILENCE
 
     kazki
-        бозко!
+        bozko!
     
     bozko
-        некоторые из нас предпочитают более.. живой подход к изучению
+        although, she is taking a more live approach
 
     kazki
-        бозко!!
+        bozko!!
 
     sourceless
-        ЕЁ РЕЦЕПТОРЫ СКРУЧИВАЮТСЯ НАСТОЛЬКО ТУГО, ЧТО СЕЙЧАС СКОРЕЕ ПОХОДЯТ НА КУЛАКИ
+        HER RECEPTORS CURL INTO THEMSELVES, LIKE BALLED FISTS
 
     kazki
-        ладно! ладно!!
+        fine, fine!
             EXEC::vnp({kazki: "focus"})
-        акизет, я провожу эксперимент
-        ну, наверное это можно так назвать
-        во время поездки в австралию, я нашла небольшое существо на стекле
-        решила посмотреть поближе... и увидела у него восемь ног, яркий полосатый окрас и кучу глаз! глаз, которые смотрели на меня!
-        у него даже оболочка твёрдая! прям как у <span definition="ПРИМЕЧАНИЕ::'частичный перевод';'сгенерировано подходящее по описанию существительное'">хранителя пещер</span>!
-        и--и я подумала: 'ой! какой милый!', потому забрала себе!
+        it is an experiment i am doing, akizet
+        well, hmm, sort of
+        on my trip to australia i found this little creature skittering around on a window
+        so, i looked closer... and it had eight legs, vibrant stripes, and many large eyes! and it was staring at me!
+        it even had armored skin, just like a <span definition="NOTE::'partial translation';'inherited description-generated noun'">cave keeper!</span>
+        and--and i thought, 'ah, how cute!' and i wanted to keep it!
 
     sourceless
-        СУДЯ ПО ИНТОНАЦИИ, С КОТОРОЙ ОНА ВСЁ ЭТО ГОВОРИТ
-        ОНА БОИТСЯ ЧТО Я ЗАСТАВЛЮ ВЕРНУТЬ СУЩЕСТВО НАЗАД
+        WITH HOW EMOTIONALLY SHE WEIGHTS HER WORDS
+        IT IS LIKE SHE EXPECTS ME TO SAY SHE SHOULD PUT IT BACK
 
     bozko
-        и сделала для него в голове дыру
+        so she made a cavity in her head
             EXEC::vnp({kazki: "defocus"})
     
     akizet
-        что?! это прав--?
+        what? are you--?
 
     kazki
-        я всё объясню!!
+        i am getting to that!!
             EXEC::vnp({kazki: "focus"})
-        так вот.. приготовилась я его хватать, как оно само вдруг прыгнуло мне в руку! словно само хотело со мною остаться!
-        внезапно я услышала, что ко мне идут светлые близнецы - наверное, чтобы посмотреть что же меня задержало..
-        я по быстрому извинилась, и сказала что ненадолго вернусь на судно
-        но уже там поняла--на судне же нет системы жизнеобеспечения! а значит, если я хочу оставить существо себе, мне придётся придумать где же я буду его держать
-        придётся, так сказать: 'пораскинуть мозгами'!
+        so... i went to pick it up, but it leaped into my hand!
+        like it wanted to be with me! ah, but, by this time, some bright cousins were coming to see what i was doing...
+        so i excused myself and went back to my vessel
+        and i realized--there is no life support in our vessels, so, if i wanted to keep it alive... i had to think!
+        with my head!
     
     akizet
-        ..вот значит ты все мозги и раскидала, ясно.
-        и что теперь, держишь его в воздушном пузыре?
+        so you hollowed out your head,
+        and are keeping it in an air pocket?
 
     kazki
-        именно!! хочешь посмотреть???
+        exactly!! do you want to see it???
     
     sourceless
-        Я С НЕУВЕРЕННОСТЬЮ СМЕЮСЬ И БОЛТАЮ РЕЦЕПТОРАМИ
-        БОЗКО МОЯ РЕАКЦИЯ ПОХОЖЕ ОЧЕНЬ СМЕШИТ
-        ДА.. ПОДОБНАЯ ПРОБЛЕМА, И ЧТО ВАЖНЕЕ ПОДОБНОЕ РЕШЕНИЕ МОГЛИ ЗАРОДИТЬСЯ ЛИШЬ В РАЗУМЕ ТИРА
+        MY RECEPTORS DROOP SLIGHTLY, AND I CHUCKLE EXASPERATEDLY
+        BOZKO FINDS MY REACTION VERY FUNNY
+        INDEED, THIS IS BOTH A PROBLEM AND SOLUTION THAT ONLY A ONCE-TIR WOULD COME TO
     
     akizet
-        конечно хочу
+        of course i do
 
     sourceless
-        КАЗКИ НАКЛОНЯЕТ СВОЮ ГОЛОВУ. ЧЕРТЫ ЕЁ ЛИЦА ОПЛАВЛЯЮТСЯ И УХОДЯТ, А КОЖА СТАНОВИТСЯ ПОЛУПРОЗРАЧНОЙ
+        KAZKI DIPS HER HEAD FORWARD, THE FEATURES OF HER FACE MELTING AWAY, AND THE COLOR OF HER SKIN FADING TO TRANSPARENCY
             EXEC::specialCam('kazkihead');content.classList.add('kazkihead')
-        ВНУТРИ ГОЛОВЫ ПУСТО. ВНУТРЕННЯЯ ПОВЕРХНОСТЬ РОВНАЯ, СЛОВНО СТЕКЛО БЛИЗНЕЦОВ. ВСЁ ПРОСТРАНСТВО ЗАНИМАЕТ СФЕРИЧЕСКАЯ ПОЛОСТЬ
-        Я КРУЧУ ГОЛОВОЙ ВПРАВО-ВЛЕВО, ДАЖЕ МЕНЯЮ ОПТИЧЕСКИЕ СВОЙСТВА ГЛАЗ, НО ВСЁ НИКАК НЕ МОГУ ЗАМЕТИТЬ СУЩЕСТВО ВНУТРИ
-        ХОТЯ.. ВОТ ЖЕ ОНО, ВИСИТ НА ЕЛЕ ЗАМЕТНЫХ ОРГАНИЧЕСКИХ НИТЯХ СОБСТВЕННОГО ПРОИЗВОДСТВА
+        IT IS EMPTY, CLEAR AS THE BRIGHT COUSINS' GLASS, CONTAINING ONLY A SPACIOUS SPHERICAL CAVITY
+        I TILT MY HEAD FROM SIDE TO SIDE, EVEN ADJUST THE ACCURACY OF MY EYES, BUT DO NOT SEE IT
+        AT LEAST, NOT AT FIRST... BUT THEN IT IS THERE, SITTING SUSPENDED ON BARELY VISIBLE STRANDS OF ITS OWN CREATION
     
     sys
-        ОПОВЕЩЕНИЕ::'обнаружено воспоминание паукообразного';'визуализировать?'
+        ALERT::'memory of arachnid detected';'render?'
 
     RESPONSES::sys
-        визуализировать<+>arthur
+        render<+>arthur
             EXEC::content.classList.add('spider')
-        отказаться<+>arthur
+        omit<+>arthur
 
 arthur
     sourceless
-        ОНО ПРИСТАЛЬНО НА МЕНЯ СМОТРИТ, ЗАТЕМ ПОДНИМАЕТ ПЕРЕДНИЕ ЛАПЫ И НАЧИНАЕТ ИМИ МАХАТЬ ВПРАВО-ВЛЕВО
-        ПОЛАГАЮ ЭТО УГРОЗА
+        IT LOOKS AT ME, THEN RAISES ITS FORELEGS AND WAVES THEM BOTH FROM SIDE TO SIDE
+        I IMAGINE THIS IS SOME SORT OF THREAT
     
     akizet
-        теперь вижу, чем оно тебе так понравилось
+        i can see why you chose to keep it
     
     sourceless
-        КАЗКИ ПОДНИМАЕТ ГОЛОВУ И ВОССТАНАВЛИВАЕТ ЧЕРТЫ ЛИЦА
+        KAZKI REPLACES HER FACIAL FEATURES, PULLING HER HEAD BACK
             EXEC::specialCam('kazkibozko');content.classList.remove('kazkihead')
     
     kazki
-        его глаза сияют такой яркой жизнью!
+        such life in its little eyes!
             EXEC::content.classList.remove('spider');vnp({kazki: "defocus"})
 
     RESPOBJ::d1_kazkibozkoresp
 
 focus
     akizet
-        близится фокус, друзья
-        вы готовы? нашли чем поделиться?
+        our focus approaches, my friends
+        are you prepared? do you have any topics to bring?
     
     sourceless
-        ОБА ПОДТВЕРЖДАЮЩЕ КИВАЮТ
+        THEY BOTH DIP THEIR RECEPTORS AFFIRMATIVELY
 
     kazki
-        да!
+        yes!
     
     akizet
-        это хорошо! отправляйтесь в отдел, как будете готовы
-        для этой встречи удалось выбить времяостановитель, потому встреча будет чрезвычайно короткой
+        good! report to the signal chamber when you are ready
+        i arranged for the timestopper to be used this time, so it will be quick
     
     bozko
-        замечательно
-        мы тут пока ненадолго задержимся, увидимся на встрече!
+        excellent
+        we will be there shortly, you go ahead
 
     RESPOBJ::d1_kazkibozkoresp
 `)
@@ -1036,33 +718,34 @@ focus
 env.localization.page['embassy'].dialogues["d1_kazki_research"] = generateDialogueObject(`
 start
     akizet
-        готова, казки?
+        ready to proceed, kazki?
     
     kazki
-        <span definition="ПРИМЕЧАНИЕ::'распространённая фраза';'исходная игра слов €Ø/Ł]ØĦŘΔ-xҜŞ€ĦΔβŞl;vc'??€Ł¥';'сгенерирована альтернативная игра слов';'уровень забавности сохранён'">безкуусловно!</span>
+        <span definition="NOTE::'common phrase';'original pun untranslateable';'generated alternate pun';'retains level of wit'">absoqoutely!</span>
     
     akizet
-        хех, хорошо
+        hehe, excellent
     
     RESPONSES::akizet
-        скоро начнём<+>END
+        we will start soon<+>END
 `)
 
 env.localization.page['embassy'].dialogues["d1_bozko_research"] = generateDialogueObject(`
 start
     akizet
-        готов, бозко?
+        ready to proceed, bozko?
     
     bozko
-        конечно
-        хотелось бы, правда, иметь побольше тем для обсуждения, учитывая какая техника нам была предоставлена на этот θвзор
+        of course
+        i only wish i had more to share given our amenities this θgaze
     
     akizet
-        это верно!
-        используя времяостановитель, кажется что обсудить можно всё
+        true!
+        with the timestopper,
+        it often seems like there is never enough
     
     RESPONSES::akizet
-        скоро начнём<+>END
+        we will start soon<+>END
 `)
 
 /* DAY 1 - ATTENDANT/GROUNDSMIND */
@@ -1070,83 +753,85 @@ start
 env.localization.page['embassy'].dialogues["d1_attendantresp"] = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::akizet
-        времяостановитель<+>timestopper
-        на этом всё<+>leave
+        timestopper<+>timestopper
+        that is all<+>leave
             FAKEEND::(leave)
 `)
 
 env.localization.page['embassy'].dialogues["d1_attendant"] = generateDialogueObject(` 
 start
     sourceless
-        Я ПОДХОЖУ К ОБСЛУЖИВАЮЩЕМУ ДРОНУ
+        I APPROACH THE ATTENDANT DRONE
             EXEC::pauseSwapCam(true)
-        СЕЙЧАС ОН БЕЗЛИК, А ПОТОМУ ПРОСТО СМОТРИТ В ПУСТОТУ
+        IT IS FACELESS AT THE MOMENT
+        SO IT REGARDS ME WITH A SIMPLE STARE
 
     RESPONSES::akizet
-        поговорить со структуразумом<+>groundsmind
-        не важно<+>END
+        speak with groundsmind<+>groundsmind
+        nevermind<+>END
             EXEC::pauseSwapCam(false);
     
 groundsmind
     akizet
-        свяжи со структуразумом
+        the groundsmind, please
 
     attendant
-        ХОРОШО!
+        OF COURSE!
 
     sourceless
-        ДРОН ВЫПРЯМЛЯЕТСЯ. С ПОДКЛЮЧЕНИЕМ ЕГО ОБОЛОЧКА НАЧИНАЕТ ВИБРИРОВАТЬ
-        НА ЕГО ЛИЦЕВОЙ ПЛАСТИНЕ ПРОЯВЛЯЕТСЯ СИГИЛ НАШЕГО СТРУКТУРАЗУМА
+        THE DRONE STRAIGHTENS, AND A CONNECTIVE RIPPLE PASSES THROUGH ITS SKIN
+        OUR GROUNDSMIND'S SYMBOL IS FORMED OVER ITS FACEPLATE
             EXEC::content.classList.add('groundsminded')
         
     akizet
-        привет векоа!!
+        hello vekoa!!
     
     groundsmind
-        акизетеше. говори уже что нужно
+        akizetesche. speak
 
     RESPOBJ::d1_attendantresp
     
 timestopper
     akizet
-        спасибо, что предоставила времяостановитель
-        когда, говоришь, нам надо будет его вернуть?
+        i appreciate you affording us the timestopper
+        how long was it again that we have it?
 
     groundsmind
-        по первоначальному плану - через пару θвзоров..
-        впрочем, несколько θподмигов назад план изменился - согласно новому плану, времяостановитель вверяется инициативе исследования зова на неопределённый срок
-        смена плана произошла в связи с утратой потребности в симуляции материалов
-        едва схожая потребность возникнет у иной инициативы - времяостановитель тут же будет ей передан
+        originally you had it for only a few θgazes... 
+        however: as of a few θwinks prior, it is indefinitely in the care of the call initiative
+        the schedule has shifted due to materials no longer needing an upcoming simulation
+        once another initiative has need of it, it will be transferred
 
     akizet
-        вот значит как.. чтобы вместить времяостановитель нам потребовалось сдвинуть множество цист
-        и всё равно разместить нам удалось лишь его верхушку...
+        really? we moved quite a bit of cystery to accommodate it,
+        and still only the top barely fits in the room...
     
     groundsmind
-        это запрос на перемещение времяостановителя после текущего фокуса?
+        is this a request to have it removed post-use?
+        this can be arranged
     
     akizet
-        м.. нет, пожалуй нет
-        самые важные цисты мы оставили на своих местах, да и времяостановитель может пригодиться
-        с ним время наших встреч и собраний кратно сократится
-        если он станет мешать - я свяжусь с тобою ещё раз
+        hmm... no, no
+        the cysts were not vital, and this may be a boon
+        it does shorten our meetings and plans by orders of magnitude
+        if it becomes a bother, i will reach out again
 
     RESPOBJ::d1_attendantresp
 
 leave
     akizet
-        на этом всё!
+        that is all!
     
     groundsmind
-        замечательно
-        в таком случае прощай
+        excellent
+        fare well
     
     sourceless
-        ДРОН ОТСОЕДИНЯЕТСЯ ОТ СТРУКТУРАЗУМА И ВНОВЬ ВОЗВРАЩАЕТСЯ К СВОЕМУ НЕДВИЖИМОМУ КАРАУЛУ
+        THE DRONE DISCONNECTS FROM THE GROUNDSMIND AND STANDS STILL ONCE MORE
             EXEC::content.classList.remove('groundsminded')
     
     RESPONSES::akizet
-        уйти<+>END
+        leave<+>END
             EXEC::pauseSwapCam(false);
 
 END::content.classList.remove('groundsminded');
@@ -1156,95 +841,99 @@ END::content.classList.remove('groundsminded');
 env.localization.page['embassy'].dialogues["discovery_notyet"] = generateDialogueObject(` 
 start
     sourceless
-        сяду здесь..
-        осталось дождаться пока не соберётся вся команда
-        гакву, тозик и кавик уже тут
-        не хватает лишь казки и бозко
-        стоит, наверное, напомнить им о фокусе
-        скорее всего они сейчас в зоне отдыха
+        this is where i will sit...
+        once i have the team assembled.
+        gakvu, tozik, and cavik are all here
+        all but kazki and bozko
+        i should tell them it is time for the focus
+        they are probably in the recreational area!
     
     RESPONSES::akizet
-        к зоне отдыха!<+>END
+        to recreation!<+>END
 `)
 
 env.localization.page['embassy'].dialogues["discovery"] = generateDialogueObject(` 
 start
     sourceless
-        теперь вся команда в сборе
+        the team is assembled around their seats, so i sit
     
     akizet
-        начнём же встречу!
+        everyone!
+        let us begin
     
     sourceless
-        я киваю тозику, который уже давно подключён к машине
-        он приказывает великой цисте опустить соединители для каждого из нас
-        какая редкая возможность! уверена - интересно опробовать времяостановитель даже гакву
-        я подношу соединительную цисту к правому рецептору. её оболочка размягчается, становясь тягучей жидкостью
-        она облегает мой рецептор, устанавливая соединение с машиной
-        мой разум затягивается внутрь и соединяется с разумами остальных
+        i dip my head towards tozik, as he has already connected
+        with an impulse, he instructs the grand cyst to lower wired cysts before each of us
+        what a rare opportunity! i am certain that even gakvu is excited
+        i raise the cyst to my right receptor, and its shell softens, becoming as viscous liquid
+        it settles over my receptor, and the timestopper connects to me
+        my mind is drawn into it, with the others - everyone is connected
             EXEC::content.classList.add('innerfocus')
     
     akizet
-        активирую времяостановитель!
+        commencing now!
             EXEC::env.embassy.setFocus('akizet')
     
     sourceless
-        после передачи инструкции активируются вычислительные модули великой цисты
-        их мощность и скорость настолько высока, что время почти останавливается
-        какое интересное ощущение - чувствовать вокруг себя застывший на месте мир
-        ядра наших разумов всё ещё раздельны, однако теперь каждый из нас замечает внутри себя новую сущность - разум великой цисты
+        with a simple instruction, the grand cyst's additional neural processing activates
+        its strength and processing speed is such that time... stops
+        such a peculiar sensation - to observe in full cognitive capacity a world and body that cannot move
+        though the cores of our minds are shelled from one another
+        we each carry a new mind that feels as if it was always there - the grand cyst
             EXEC::content.classList.add('showfocus')
-        разум, соединяющий наши мысли, и сам соединённый с нами
+        and it thinks with us as one
             EXEC::content.classList.add('cull-stage')
     
     timestopper
-        ну не восхитительно ли?
+        is this not peculiar?
             EXEC::env.embassy.setFocus(false)
-        ахаха! вот это забава! 
-        жаль нельзя разобрать чья мысль чья
-        тут можно как-то разделиться?
-        глупый! не так ведь давно соединялись
-        так уж и быть напомню - делай вот так
+        ahaha! how fun! 
+        oh but i cannot tell which thought is mine
+        how do we stay distinct again?
+        silly! the last one was not so long ago
+        but i will remind you
+        you do it like this
     
     sourceless
-        мы все понимаем: надо мыслить 'наружу'
+        we each understand simply: think outwardly
 
     akizet
-        напомню правила при соединении..
+        you see?
             EXEC::env.embassy.setFocus('akizet')
-        все темы стараемся обсуждать неразделённо - разделяемся только если возникли вопросы или противоречия
-        ясно?
+        a reminder of our best practice here...
+        it will be simpler to convey things of importance indistinctly
+        but for discussion, you should stay distinct
+        understood?
 
     timestopper
-        да! да! да--хватит
-        да--ой, я думаю я--да
-        даю эхо.. простите
+        yes! yes! yes stop
+        yes oh i think i am yes
+        echoing it sorry yes
     
     cavik
-        извиняюсь, это из-за меня
+        that was me sorry
             EXEC::env.embassy.setFocus('cavik')
-        не понимаю из-за чего проблема
-        подскажите как исправить - раньше всего 1 раз присоединялся
+        this is only my second time using one of these
     
     timestopper
-        всё в порядке!
+        it is ok!
     
     kazki
-        расслабься! не зажимайся!
+        you are too tense!
             EXEC::env.embassy.setFocus('kazki')
-        дай мысли свободно сквозь себя протечь!
-        должно помочь!
+        just let it pass through you!
+        that is how i stop echoing
     
     timestopper
-        теперь всё работает? да! хорошо
+        are we good? yes! ok
             EXEC::env.embassy.setFocus(false)
-        перейдём к обсуждению зова
+        now onto the matters of the call
     
     sourceless
-        меж нами передаётся гигантский объём информации
-        детально оговоренные обсуждения и планы для экспедиций
-        в одно мгновение, краткое даже для искажённого времени великой цисты
-        передано и понято безмолвное знание, описывающееся словами лишь для архивов
+        a great deal of information is transmitted between us
+        long-overdue discussions and planning for expeditions
+        in an instant, fast even within the altered time of the grand cyst,
+        wordless knowledge is understood, assigned words only in afterthought
     
     timestopper
         Êü€ßÑúŽÞRùãÝ™÷ûÜ›ö±Ü¨õ*ÜRômÜÜóŒÜéóSÝÚ
@@ -1253,7 +942,7 @@ start
         ôŸÞó]á‘óUåAô)êô
     
     sys
-        ОПОВЕЩЕНИЕ::'большой объем необработанных данных';'пропуск потока до следующих связных данных'
+        ATTENTION::'large amount of unprocessable data';'advancing stream to next coherent data'
             EXEC::flash(true)
     
     sourceless
@@ -1263,167 +952,167 @@ start
             EXEC::flash(false)
     
     timestopper
-        НА ГУАМЕ ШПИЛЬ ПОЛИГОНАЦИИ НАВЕРНОЕ ЛЕГЧЕ ВСЕГО ПОСТРОИТЬ
-        КАЗКИ, СОГЛАСНА?
+        POLYGONATION SPIRE IN GUAM IS LIKELY EASIEST
+        KAZKI AGREES?
     
     kazki
-        да! я организую встречу
-        последний визит им очень понравился, так как привлёк много внимания туристов!
-        шпиль будет выгоден обеим сторонам!
+        yes! i will organize a meeting
+        they liked the last time we visited because it drew lots of attention!
+        so a spire would be lucrative for us both! 
 
     bozko
-        особо мощным или точным его делать не требуется
+        it does not need to be of the highest strength or quality
             EXEC::env.embassy.setFocus('bozko')
-        экспериментального подтверждения моему решению пока нет, но.. 
-        знакомые казки множество раз предлагали впадину
-        согласно их информации это, пожалуй, одно из наименее исследованных мест данной планеты
-        вероятность того, что источник находится там - весьма высока
+        there is no hard data backing my decision
+        but... kazki's contacts have suggested the trench multiple times
+        and if what they say is true, 
+        it is one of the least explored places on this planet
+        so there is certainly potential for the origin to be there, never seen 
 
     timestopper
-        смысл ясен!
-        в конце концов, других зацепок у нас нет ахахаха
-        остались ещё какие-то насущные вопросы?
-        нет
-        постойте--да, мы же нашли пик
-        глядите!
+        makes sense! no argument!
+        no other leads yet anyway ahaha
+        anything else before we disengage?
+        no
+        wait yes we have the spike
+        see!
     
     sourceless
-        в нашем общем мысленном взоре появляется визуализация сигнала
+        in our collective mind's eye, a visualization of the signal is shown
             EXEC::env.embassy.setFocus(false);content.classList.add('signal')
-        на ней виден странный пик.. вполне возможно, вызванный близостью к открытию серое
+        a strange spike... but not unexpected given the dull contrivance's proximity
     
     timestopper
-        интересно
-        частотность неестественная
-        да и пик слишком сильно выделяется среди обычной активности зова
-        может это ошибка?
-        нет - это результат сбора данных со слушателей по всей планете
-        эх.. как жаль что их параллелизация не помогла полигонации..
-        и что будем с этим скачком амплитуды делать?
-        просто запишем в архив?
+        that is peculiar
+        this frequency looks unnatural
+        it is too far from the call's baseline activity
+        could it be an error?
+        no - this is aggregate data from many listeners all across this planet
+        did not help polygonation regrettably
+        so what do we do about it?
+        do we just mark it down?
     
     tozik
-        постойте
+        wait
 
     sourceless
-        проявляется ещё один пик. судя по подписи - данные взяты из архивных цист
+        identical memorized data from an archival cyst manifests
             EXEC::env.bgm.rate(0.9);content.classList.add('signal2')
-        тут должна быть какая-то ошибка - пик из архивов идентичен современному
+        did he bring up the same record by accident?
             EXEC::env.bgm.rate(0.8)
-        тозик нечаянно переписал данные на старой цисте?
+        no... this is different
             EXEC::env.bgm.rate(0.7)
-        нет.. если присмотреться, различие между ними всё же можно заметить.
     
     tozik
-        я просмотрел около 12 θглаз записей
-        такое уже один раз происходило
-        мы фиксировали такой же пик, с такой же длительностью
+        i have been searching through approximately twelve θeyes of data
+        this has happened once before. see?
+        the same type of spike, with the same duration
     
     timestopper
-        сколько θглаз назад была сделана запись этого пика? семь? восемь?
+        how many θeyes ago was that? seven? eight?
     
     gakvu
-        посмотрите
+        look
             EXEC::content.classList.add('signal3')
-        этот пик по времени был зафиксирован ровно на половине полученного зова
+        that is exactly equidistant from the start of the call
     
     tozik
-        да
-        это значит, что в амплитуде зова наблюдаются регулярные скачки
+        exactly
+        the exact same spike, at exactly fifty percent of the call
     
     timestopper
-        регулярные скачки? с таким долгим интервалом?
-        что это значит?
+        how is that possible? could it be a coincidence?
+        absolutely not
     
     tozik
-        я уже встречал подобный шаблон
+        i have seen this before
             EXEC::env.embassy.setFocus('tozik')
-        в моих ранних исследованиях, ещё личиночных, кажется, я изучал методы коммуникации на основе сырой мысли
-        необученное корру инстинктивно пользуется такими мыслями для связи, поэтому они широко использовались для управления первыми корруцистозными устройствами
-        такой метод коммуникаций очень неэффективен и груб
-        для того чтобы следить за точностью передачи сообщения и его длительностью, в передачах на основе сырой мысли на одинаковых интервалах размещаются скачки в амплитуде сигнала
+        in my early studies, maybe even larval
+        these are markers of raw thought - unoptimized, primal
+        what corru knows and broadcasts instinctively, 
+        and what early corrucystic pioneers used for communication
     
     sourceless
-        наш общий разум пронзает какое-то странное чувство. смесь страха, отчаяния и бессилия
-        его чувствую только я? оно моё? кто-то испуган?
-        ничего не понимаю
+        a strange dread spreads through our shared mind
+        why do i feel it too? is it mine? am i scared?
+        this does not mean anything
         
     tozik
-        всего таких скачков 5 - в начале, конце, а также на 25%, 50% и 75% общей длительности сигнала
-        учитывая, что записать начало зова никто не успел..
-        вполне возможно, что для его передачи используется именно такой принцип
-        и мы только что получили метку, отмечающую что сигнал наполовину принят
+        in raw thought transmission, the signal spikes at regular intervals
+        five equidistant times, once at the beginning
+        and there are no recordings of the exact beginning...
+        so that means it could be halfway done, if this is true
         
     timestopper
         ...
-        но почему он так долго передаётся?
-        разве вообще бывают столь крупные мысли?
-        разве вообще возможно..
+        but it has been broadcast for how long?
+        how could a thought be that large?
+        could we even
         ...
             EXEC::content.classList.remove('signal', 'signal2')
 
     sourceless
-        в меня снова впиваются когти того странного ужаса. я не могу думать ни о чём кроме него
-        он всё же мой?? никто о нём не говорит - может они сами не понимают что происходит?..
-        кто же настолько испуган? что вообще может вызвать такие необъятные страх и отчаяние?
-        мне хочется сбросить цисту с рецептора, но я не могу пошевелиться
-        система сжатия времени всё ещё активна
+        the dread's claw bites into me, paralyzing my thoughts
+        is it mine?? no one is commenting upon it - perhaps confused, themselves...
+        so then who is scared? it is overwhelming
+        i feel like tearing the cyst from my receptor, but i cannot move
+        not without first turning off the time constriction
     
     timestopper
-        можно придумать множество других объяснений данному феномену
-        мы делаем предположения лишь на основе 2 случаев
-        теория интересная, конечно, но для её подтверждения или опровержения нам придётся прождать не один θглаз
-        я надеюсь тут все понимают, что до этого момента мы должны держать наши предположения в тайне?
-        что?!
+        it could be something else
+        there are only two data points here
+        a compelling theory but that means we must wait a long time
+        are we all in agreement that we should probably tell no one about this
+        what!
     
     cavik
-        постойте, что?! да это же уму непостижимо!
+        wait, why! this is huge!
             EXEC::env.embassy.setFocus('cavik')
-        сама возможность такого сценария кардинально меняет наше отношение к зову..
-        неужели вы сами этого не понимаете?
+        even just the possibility changes everything...
+        you know what this means, right?
     
     akizet
-        кавик... это не просто интересная теория
+        cavik... this is not a theory of fancy
             EXEC::env.embassy.setFocus('akizet')
-        это теория, которая может поставить под сомнение все основы нашего общества...
-        для принятия какого-то вдумчивого решения нам пока не хватает данных.
+        it is true that this does change everything...
+        but we are still missing data. right?
     
     timestopper
-        да, данных требуется больше
-        бездумно всех пугать точно не стоит
-        уж точно не до тех пор, пока мы не получим подтверждение
+        right yes we need more
+        we cannot simply share it
+        not while the evidence is incomplete
 
     akizet
-        все ли с этим согласны?
+        is anyone in disagreement?
     
     sourceless
-        я чувствую себя одновременно сконфуженно и облегчённо
-        всё верно - теория пусть и очень убедительная, но пока не доказанная
-        судя по реакциям даже этой небольшой команды, в публике она вызовет серьёзные потрясения
-        а учитывая что теоретический первый пик по итогу так и не был зафиксирован, эти потрясения с нами останутся как минимум на ближайшие 8 θглаз
-        что бы ни представлял из себя зов, нам потребуется некоторое время чтобы успокоиться, и всё хорошенько обдумать
-        приму молчание команды как знак согласия.
+        i sense a mixture of frustration and relief
+        indeed, this is compelling, but it is simply a theory
+        judging by the team's reactions, even sharing it as a possibility would be quite an upset
+        without the theoretical first spike being recorded, it is hard to justify
+        either way it is not worth interrogating at this time - we need only wait
+        i take everyone's silence as confirmation
         
     akizet
-        хорошо
-        в таком случае фокус объявляю завершённым
+        excellent
+        adjourning
 
     timestopper
-        всем пока!
+        bye everyone!
             EXEC::content.classList.remove('cull-stage', 'showfocus')
 
     sourceless
-        время возвращает свою привычную скорость. я снимаю цисту с рецептора
+        the time constriction disengages. i remove the cyst from my receptor
             EXEC::env.bgm.rate(1)
-        в реальном времени мы сидели за времяостановителем считанные мгновения - стой рядом с нами светлый близнец, он должно быть не успел бы и вдоха свершить
+        in real time, we had been sitting only for the length of a larval breath
+        but immediately, everyone stands, relieved at their freedom
             EXEC::content.classList.remove('innerfocus')
-        тем не менее, каждый из нас показывает признаки утомления
-        я уважительно киваю команде и возвращаюсь в покои
+        i dip my head and receptors towards the team, and return to my quarters
     
     RESPONSES::sys
-        завершить вспоминание<+>END
+        end recollection<+>END
             EXEC::change("embassy_d1_complete", true);corruRefresh()
 
-SKIPNOTICE::это завершит поток памяти
+SKIPNOTICE::this will end the memory stream
 SKIP::content.classList.remove('cull-stage', 'showfocus');content.classList.remove('innerfocus');change("embassy_d1_complete", true);corruRefresh()
 `)
