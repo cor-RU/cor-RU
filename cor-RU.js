@@ -67,9 +67,9 @@ if (window.location.pathname == '/credits') {
     document.querySelector(".fundfriends").insertAdjacentHTML("afterbegin", fund)
     throw new Error("hi dont mind me cor-RU is not supposed to load properly in credits")
 }
-else if ((page.path == '/' && !check('TEMP!!sat') && check('ep0_epilogue') && !check('ep1_showmaterials')) || env.ep1 == true) {
-    chatter({actor: 'actual_site_error', text: "hi! cor-RU is availiable only for ep0<br>приветик! cor-RU доступен только для ep0", readout: true})
-    throw new Error("hi! сor-RU is availiable only for ep0")
+else if ((page.path == '/' && !check('TEMP!!sat') && check('ep1_end') && !check('ep2_showmaterials')) || env.ep2 == true) {
+    chatter({actor: 'actual_site_error', text: "hi! cor-RU is availiable only for ep0-1<br>приветик! cor-RU доступен только для ep0-1", readout: true})
+    throw new Error("hi! сor-RU is availiable only for ep0-1")
 }
 
 env.localization = {
@@ -503,14 +503,6 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         },
     },
 
-    // this is mildly annoying
-
-    embassyCoherent: function () {
-        if (env.localization.page['localocean']) env.localization.page['localocean'].entityDescriptions['the embassy'] = `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'выступление';'велзи гогочет от восторга'</span>`
-        cor_ru.entity_menu['the embassy']['desc'] = `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА<br>
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>"'выступление';'${processDefinitionsInString("велзи")} гогочет от восторга"')}</span>`},
-
     // tehehe we are devs now
 
     devElement: `<div class="devs ulbox tdone cor-ru">
@@ -519,6 +511,8 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         <li class="tdone"><span class="tdone" definition="@dutokrisa в discord!" class="tdone">ООО "РОСРАЗУМ"</span></li>
         <li class="tdone"><span class="tdone" definition="таинственный человек о котором вы не узнаете">НАО "Млечный Путь"</span></li>
         <li class="tdone"><span class="tdone" definition="@bra1nslug_ в discord, @bruhslug в telegram!" class="tdone">Фонд "Моллюск"</span></li>
+        <h4 class="tdone">НЕОФИЦИАЛЬНЫЕ ПРАВКИ НЕОФИЦИАЛЬНОГО ПЕРЕВОДА, АВТОР ДАННОГО ФОРКА</h4>
+        <li class="tdone"><span class="tdone" definition="@darkthunderer в discord!" class="tdone">ИП Колдунов Август Дмитриевич</span></li>
     </ul>
 </div>`,
 
@@ -527,29 +521,39 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
     },
 
     // loading and updating stuff as we go
+    
 
     list: {
-        everything: "https://cor-ru.github.io/cor-RU/localization/everystuff.js",
+        everything: "https://darkthunderer.github.io/cor-RU/localization/everystuff.js",
         page: {
-            fbx:                "https://cor-ru.github.io/cor-RU/localization/basement.js",
+            fbx:                "https://darkthunderer.github.io/cor-RU/localization/basement.js",
 
-            hello:              "https://cor-ru.github.io/cor-RU/localization/auth-layer.js",
-            hub:                "https://cor-ru.github.io/cor-RU/localization/hub.js",
+            hello:              "https://darkthunderer.github.io/cor-RU/localization/auth-layer.js",
+            hub:                "https://darkthunderer.github.io/cor-RU/localization/hub.js",
 
-            localcity:          "https://cor-ru.github.io/cor-RU/localization/their-city.js",
-            citystreet:         "https://cor-ru.github.io/cor-RU/localization/city-surface.js",
+            localcity:          "https://darkthunderer.github.io/cor-RU/localization/their-city.js",
+            citystreet:         "https://darkthunderer.github.io/cor-RU/localization/city-surface.js",
 
-            localorbit:         "https://cor-ru.github.io/cor-RU/localization/the-void.js",
-            dullvessel:         "https://cor-ru.github.io/cor-RU/localization/our-dull-vessel.js",
+            localorbit:         "https://darkthunderer.github.io/cor-RU/localization/the-void.js",
+            dullvessel:         "https://darkthunderer.github.io/cor-RU/localization/our-dull-vessel.js",
 
-            localocean:         "https://cor-ru.github.io/cor-RU/localization/their-waters.js",
-            localship:          "https://cor-ru.github.io/cor-RU/localization/their-vessel.js",
-            interview1:         "https://cor-ru.github.io/cor-RU/localization/the-funny-little-room.js",
+            localocean:         "https://darkthunderer.github.io/cor-RU/localization/their-waters.js",
+            localship:          "https://darkthunderer.github.io/cor-RU/localization/their-vessel.js",
+            interview1:         "https://darkthunderer.github.io/cor-RU/localization/the-funny-little-room.js",
 
-            localdepths:        "https://cor-ru.github.io/cor-RU/localization/the-depths.js",
+            localdepths:        "https://darkthunderer.github.io/cor-RU/localization/the-depths.js",
+            localuncosm:        "https://darkthunderer.github.io/cor-RU/localization/uncosm.js",
+            localuncosmwhere:   "https://darkthunderer.github.io/cor-RU/localization/memory-hole.js",
+            recosm:             "https://darkthunderer.github.io/cor-RU/localization/recosm.js",
+            cache:              "https://darkthunderer.github.io/cor-RU/localization/cache.js",
+            localship2:         "https://darkthunderer.github.io/cor-RU/localization/clemens-romanus.js",
+
+            embassy:            "https://darkthunderer.github.io/cor-RU/localization/embassy/embassy.js",
+            discovery:          "https://darkthunderer.github.io/cor-RU/localization/embassy/discovery.js",
+            suspicion:          "https://darkthunderer.github.io/cor-RU/localization/embassy/suspicion.js",
         },
-        entityMenu: "https://cor-ru.github.io/cor-RU/localization/entity-menu.js",
-        load:       "https://cor-ru.github.io/cor-RU/load.js",
+        entityMenu: "https://darkthunderer.github.io/cor-RU/localization/entity-menu.js",
+        load:       "https://darkthunderer.github.io/cor-RU/load.js",
     },
 
     updateResources: function (fresh = false) {
@@ -558,8 +562,14 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         if (fresh == true) {
             listArray.push(cor_ru.list.everything);
             listArray.push(cor_ru.list.entityMenu);
-            if (Object.hasOwn(cor_ru.list.page, page.dialoguePrefix)) listArray.push(cor_ru.list.page[page.dialoguePrefix])
-                else if (page.dialoguePrefix != "notfound") console.warn("the page with dialoguePrefix " + page.dialoguePrefix + " does not have a localization! this might be a bug, but might also be intentional or plain expected if you are using other mods - @cor-RU");
+            if (Object.hasOwn(cor_ru.list.page, page.dialoguePrefix)) {
+                if (page.dialoguePrefix == "embassy") {
+                    listArray.push(cor_ru.list.page.discovery)
+                    listArray.push(cor_ru.list.page.suspicion)
+                }
+                listArray.push(cor_ru.list.page[page.dialoguePrefix])
+            }
+            else if (page.dialoguePrefix != "notfound") console.warn("the page with dialoguePrefix " + page.dialoguePrefix + " does not have a localization! this might be a bug, but might also be intentional or plain expected if you are using other mods - @cor-RU");
             listArray.push(cor_ru.list.load);
         }
         else {
@@ -593,23 +603,25 @@ cor_ru['advance'] = function () {
     }, 1000)
 }
 cor_ru['advancewarnclick'] = function () {
-    document.body.insertAdjacentHTML('beforeend', `
-        <div id="ru-warning" class="popup-warning">
-            <div class="sysblock">
-                <div class="sysbox ru">
-                    <h3>!!__ПРЕДУПРЕЖДЕНИЕ__!!</h3>
-                    <p class="sysinfo">Приветик! Вы достигли конца <em>полноценно переведённого контента в cor-RU!</em></p>
-                    <p class="sysinfo">В следующем эпизоде cor-RU отключится и игра будет состоять целиком из английского текста.</p>
-                    <p class="sysinfo">Если есть вопросы, просьбы, предложения или надо зарепортить баг, обращайтесь к @dutokrisa, @bra1nslug_ в дискорде или @bruhslug в телеграме. Также доступны: <a target="_blank" class="rulink" href="https://forms.gle/HHGhd4zU3VmJQgPCA">анонимная гугл форма</a> и <a target="_blank" class="rulink" href="https://discord.gg/QtqqCh8myn">дискорд сервер</a>.</p>
-                    <p class="sysinfo">Спасибо за использование :]</p>
-                    <div class="buttons">
-                        <span id="gpu-done" class="button" onclick="cor_ru.advance();document.querySelector('#ru-warning').remove()">продвинуть лог</span>
-                        <span id="gpu-hide" class="button" onclick="document.querySelector('#ru-warning').remove()">пока не продвигать</span>
+    if (env.ep1 == true) {
+        document.body.insertAdjacentHTML('beforeend', `
+            <div id="ru-warning" class="popup-warning">
+                <div class="sysblock">
+                    <div class="sysbox ru">
+                        <h3>!!__ПРЕДУПРЕЖДЕНИЕ__!!</h3>
+                        <p class="sysinfo">Приветик! Вы достигли конца <em>полноценно переведённого контента в cor-RU!</em></p>
+                        <p class="sysinfo">В следующем эпизоде cor-RU отключится и игра будет состоять целиком из английского текста.</p>
+                        <p class="sysinfo">Если есть вопросы, просьбы, предложения или надо зарепортить баг, обращайтесь к автору форка @darkthunderer или оригинальной команде перевода @dutokrisa и @bra1nslug_ (в дискорде)/@bruhslug (в телеграме). Также доступны: <a target="_blank" class="rulink" href="https://forms.gle/HHGhd4zU3VmJQgPCA">анонимная гугл форма</a> и <a target="_blank" class="rulink" href="https://discord.gg/QtqqCh8myn">дискорд сервер</a>.</p>
+                        <p class="sysinfo">Спасибо за использование :]</p>
+                        <div class="buttons">
+                            <span id="gpu-done" class="button" onclick="cor_ru.advance();document.querySelector('#ru-warning').remove()">продолжить лог</span>
+                            <span id="gpu-hide" class="button" onclick="document.querySelector('#ru-warning').remove()">пока не продолжать</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    `)
+        `)
+    }
 }
 env.entities['advance log'] = {
     hide: true,
